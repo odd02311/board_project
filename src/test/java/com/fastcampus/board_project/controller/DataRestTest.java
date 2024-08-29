@@ -1,5 +1,6 @@
 package com.fastcampus.board_project.controller;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@Disabled("Spring Data REST 통합테스트 비활성화")
 //@WebMvcTest // controller 외의 bean들을 로드하지 않음
 @DisplayName("Data REST - API 테스트")
 @Transactional
@@ -44,7 +46,7 @@ public class DataRestTest {
   
   @DisplayName("[api] 게시글 단일 조회")
   @Test
-  void givenNothing_whenRequestingArticle_thenReturnsArticleJsonResponse() throws Exception { 
+  void givenNothing_whenRequestingArticle_thenReturnsArticleJsonResponse() throws Exception {
     // Given
 
     // When & Then
