@@ -8,10 +8,10 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 @SpringBootApplication
 public class BoardProjectApplication {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        SpringApplication.run(BoardProjectApplication.class, args);
+    SpringApplication.run(BoardProjectApplication.class, args);
 
-    }
+  }
 
 }
