@@ -13,4 +13,36 @@
             </attr>
         </attr>
     </attr>
+
+    <attr sel="#pagination">
+        <attr sel="li[0]/a"
+              th:text="'previous'"
+              th:href="@{/articles(page=${articles.number - 1})}"
+              th:class="'page-link' + (${articles.number} <= 0 ? ' disabled' : '')"
+        />
+        <attr sel="li[1]" th:class="page-item" th:each="pageNumber : ${paginationBarNumbers}">
+            <attr sel="a"
+                  th:text="${pageNumber + 1}"
+                  th:href="@{/articles(page=${pageNumber})}"
+                  th:class="'page-link' + (${pageNumber} == ${articles.number} ? ' disabled' : '')"
+            />
+        </attr>
+        <attr sel="li[2]/a"
+              th:text="'next'"
+              th:href="@{/articles(page=${articles.number + 1})}"
+              th:class="'page-link' + (${articles.number} >= ${articles.totalPages - 1} ? ' disabled' : '')"
+        />
+    </attr>
 </thlogic>
+
+        <!-- link 표현식  @{/articles(page=${articles.number - 1)}
+                         쿼리 파라미터: URL 뒤에 쿼리 파라미터를 추가, 경로 변수와 유사한 방식으로 괄호() 내에
+                         쿼리 파라미터를 정의한다.
+                         ex: @{/search(name=${query)}
+
+                            th:each == forEach문
+                            th:each = "변수 : 컬렉션"
+                            List, 배열, Iterable, Enumeration을 구현한 모든 객체에 반복 사용 가능
+
+
+        -->
