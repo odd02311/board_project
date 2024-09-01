@@ -15,7 +15,10 @@
 
 <body>
 
-  <header id="header"></header>
+  <header id="header">
+    header 삽입부
+    <hr>
+  </header>
 
   <main class="container">
 
@@ -56,33 +59,33 @@
       </div>
     </div>
 
-    <table class="table">
+    <table class="table" id="article-table">
       <thead>
         <tr>
-          <th class="col-6">제목</th>
-          <th class="col-2">해시태그</th>
-          <th class="col">작성자</th>
-          <th class="col">작성일</th>
+          <th class="title col-6">제목</th>
+          <th class="hashtag col-2">해시태그</th>
+          <th class="user-id col">작성자</th>
+          <th class="created-at col">작성일</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>첫 글</td>
-          <td>#java</td>
-          <td>fakeName</td>
-          <td>2021-05-20</td>
+          <td class="title"><a>첫 글</a></td>
+          <td class="hashtag">#java</td>
+          <td class="user-id">fakeName</td>
+          <td class="created-at"><time>2022-01-01</time></td>
         </tr>
         <tr>
           <td>두번쨰 글</td>
           <td>#spring</td>
           <td>fakeName2</td>
-          <td>2022-01-04</td>
+          <td><time>2022-01-02</time></td>
         </tr>
         <tr>
           <td>세번쨰 글</td>
           <td>#java</td>
           <td>fakeName3</td>
-          <td>2022-01-07</td>
+          <td><time>2022-01-03</time></td>
         </tr>
       </tbody>
     </table>
@@ -101,7 +104,10 @@
   </main>
 
 
-  <footer id="footer"></footer>
+  <footer id="footer">
+    <hr>
+    footer 삽입부
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
