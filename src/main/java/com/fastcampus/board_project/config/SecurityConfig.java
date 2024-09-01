@@ -29,6 +29,8 @@ public class SecurityConfig {
                   "/",
                   "/articles",
                   "/articles/{articleId}",
+                  "/articles/detail",
+                  "articles/detail/{articleId}",
                   "/articles/search-hashtag").permitAll()
               .anyRequest().authenticated())
           .formLogin(Customizer.withDefaults())
