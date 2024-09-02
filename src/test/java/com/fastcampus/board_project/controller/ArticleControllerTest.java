@@ -1,7 +1,7 @@
 package com.fastcampus.board_project.controller;
 
 import com.fastcampus.board_project.config.SecurityConfig;
-import com.fastcampus.board_project.domain.FormStatus;
+import com.fastcampus.board_project.domain.constant.FormStatus;
 import com.fastcampus.board_project.domain.constant.SearchType;
 import com.fastcampus.board_project.dto.ArticleDto;
 import com.fastcampus.board_project.dto.ArticleWithCommentsDto;
