@@ -16,6 +16,7 @@ header {
 }
 .logo-box {
   width: 150px;
+  justify-content: space-evenly;
 }
 
 .auth-buttons {
