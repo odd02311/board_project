@@ -1,5 +1,6 @@
 package com.fastcampus.board_project.controller;
 
+import com.fastcampus.board_project.domain.Article;
 import com.fastcampus.board_project.domain.type.SearchType;
 import com.fastcampus.board_project.dto.response.ArticleResponse;
 import com.fastcampus.board_project.dto.response.ArticleWithCommentsResponse;
@@ -50,6 +51,25 @@ public class ArticleController {
       map.addAttribute("articleComments", article.articleCommentResponse());
 
       return "articles/detail";
+    }
+
+    @GetMapping("/search-hashtag")
+    public String searchHashtag(
+            @RequestParam(required = false) String searchValue,
+            @PageableDefault(size = 10, sort = "cretedAt", direction = Sort.Direction.DESC) Pageable pageable,
+            ModelMap map
+    ){
+        Page<ArticleResponse> articles = articleService.searchArticlesViaHashtag(searchValue, pageable).map(ArticleResponse::from);
+        List<Integer> barNumbers = paginationService.getPaginationBarNumbers(pageable.getPageNumber(), articles.getTotalPages());
+        List<String> hashtags = articleService.getHashtags();
+
+        map.addAttribute("articles", articles);
+        map.addAttribute("hashtags", articles);
+        map.addAttribute("paginationBarNumbers", barNumbers);
+        map.addAttribute("searchType", SearchType.HASHTAG);
+
+
+        return "articles/search-hashtag";
     }
 
 }
