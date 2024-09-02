@@ -18,11 +18,10 @@ public class ArticleRepositoryCustomImpl extends QuerydslRepositorySupport imple
         QArticle article = QArticle.article;
 
         return from(article)
-                .distinct()
-                .select(article.hashtag)
-                .where(article.hashtag.isNotNull())
-                .fetch();
-
-
+            .distinct()
+            .select(article.hashtag)
+            .where(article.hashtag.isNotNull())
+            .fetch();
     }
+
 }
