@@ -1,0 +1,38 @@
+header {
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+.boards {
+  width: 50%;
+}
+.logo -box {
+  width: 100%;
+}
+
+.auth-buttons {
+  width: 25%;
+}
+
+.left {
+  margin-left: 2%;
+  width: 75%;
+  justify-content: start;
+}
+
+header > * > * {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+button {
+  height: 60px;
+
+  width: 100%;
+}
+
+.service-name {
+  font-size: 1.5rem;
+}
