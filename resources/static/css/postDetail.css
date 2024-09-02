@@ -18,7 +18,7 @@ body {
   align-items: left;
 }
 
-.user-name {
+.user-profile {
   justify-content: space-between;
 }
 
@@ -50,4 +50,18 @@ img {
 .title-section {
   width: 70%;
   justify-content: space-between;
+}
+
+* {
+  text-overflow: ellipsis;
+  margin: 1px;
+}
+
+.date {
+  transform: translateY(60%);
+}
+
+.profile {
+  border-radius: 100%;
+  overflow: hidden;
 }
