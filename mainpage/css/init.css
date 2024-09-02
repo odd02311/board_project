@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: inherit;
+    color: inherit;
+    /* text-align: center;
+    align-items: center; */
+    /* overflow: hidden; */
+  }
+  
+  html {
+    overflow: scroll;
+  }
+  
+  button {
+    background: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    overflow: visible;
+    cursor: pointer;
+  }
+  .row-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  .column-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  li {
+    list-style: none;
+  }
+  
+  a:hover,
+  a:visited,
+  a:link,
+  a:active {
+    text-decoration: none;
+  }
+  a:hover {
+    color: #a00;
+  }
+  
