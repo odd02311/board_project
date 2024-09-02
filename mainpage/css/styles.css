@@ -1,0 +1,43 @@
+.card-container {
+    /* Flexbox 활성화 */
+    display: flex;
+    /* 카드 간의 간격을 동일하게 */
+    justify-content: space-between;
+    /* 카드 간의 간격 */
+    gap: 20px;
+    /* 컨테이너 내부 패딩 */
+    padding: 20px;
+     /* 컨테이너 외부 여백 설정 */
+     margin: 0 15%; 
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* 카드의 고정 너비 */
+    width: 18rem;
+    /* 콘텐츠가 넘칠 경우 숨기기 */
+    overflow: hidden;
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #333;
+}
