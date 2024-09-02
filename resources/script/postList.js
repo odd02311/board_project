@@ -5,7 +5,7 @@ function appendRow() {
 
 function getRow() {
   const row = document.createElement("div");
-  row.setAttribute("class", "row-box");
+  row.setAttribute("class", "row-box outer-box");
   row.innerHTML = `      
             <div class="left-value row-box">
               <div class="data no">sample</div>
@@ -23,14 +23,16 @@ function getRow() {
 
 function appendHeadRow() {
   row = getRow();
-  row.setAttribute("class", "row-box head-row");
+  row.setAttribute("class", "row-box head-row outer-box");
   document.querySelector(".table").append(row);
+  row.style.borderWidth = "1px 0px 1px 0px";
 }
 
 window.onload = () => {
   appendHeadRow();
   for (let i = 0; i < 20; i++) {
     appendRow();
+
     console.log("append");
   }
 };

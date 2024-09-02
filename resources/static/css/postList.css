@@ -3,13 +3,14 @@
   align-items: center;
   text-overflow: ellipsis;
 }
+
 .data {
   margin-left: 3%;
   margin-right: 3%;
 }
 
 .head-row {
-  background-color: aqua;
+  border-width: 0px 0px 1px 1px;
 }
 
 .table {
@@ -48,4 +49,25 @@ li {
 
 .pagination {
   margin-top: 2%;
+}
+
+.outer-box {
+  height: 40px;
+  border: 1px solid rgb(245, 245, 245);
+
+  border-width: 0px 0px 1px 0px;
+}
+
+h1 {
+  width: 70%;
+  text-align: left;
+  font-size: 5rem;
+}
+
+.head-row {
+  box-shadow: 0px 3px 3px -3px rgb(241, 241, 241),
+    0px -3px 3px -3px rgb(241, 241, 241);
+}
+.table {
+  overflow: visible;
 }

@@ -8,6 +8,11 @@
   align-items: center; */
   overflow: hidden;
 }
+
+html {
+  overflow: scroll;
+}
+
 button {
   background: inherit;
   border: none;
