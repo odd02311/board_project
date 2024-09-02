@@ -2,6 +2,7 @@
   text-align: center;
   align-items: center;
   text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .data {
