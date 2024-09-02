@@ -47,8 +47,12 @@ img {
   object-fit: scale-down;
 }
 
+.row-box {
+  align-items: center;
+}
 .title-section {
   width: 70%;
+
   justify-content: space-between;
 }
 

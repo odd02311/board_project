@@ -80,7 +80,11 @@ td {
 
 tr,
 thead {
-  display: flex;
+  /* display: flex; */
   width: 100%;
   justify-content: space-between;
+}
+
+table {
+  width: 100%;
 }
