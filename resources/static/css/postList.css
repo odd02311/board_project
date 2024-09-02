@@ -14,25 +14,21 @@
   border-width: 0px 0px 1px 1px;
 }
 
-.table {
-  width: 70%;
-}
-
 .container {
   justify-content: center;
   display: flex;
   flex-direction: column;
 }
 
-.left-value {
-  width: 80%;
+/* .left-value {
+  width: 100%;
   justify-content: space-evenly;
-}
+} */
 
-.right-value {
+/* .right-value {
   width: 30%;
   justify-content: space-evenly;
-}
+} */
 
 .title {
   width: 70%;
@@ -70,5 +66,19 @@ h1 {
     0px -3px 3px -3px rgb(241, 241, 241);
 }
 .table {
+  width: 70%;
+
+  /* display: flex; */
   overflow: visible;
+}
+
+td {
+  white-space: nowrap;
+}
+
+tr,
+thead {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }

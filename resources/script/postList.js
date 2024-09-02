@@ -4,25 +4,39 @@ function appendRow() {
 }
 
 function getRow() {
-  const row = document.createElement("div");
+  const row = document.createElement("tbody");
   row.setAttribute("class", "row-box outer-box");
   row.innerHTML = `      
-            <div class="left-value row-box">
-              <div class="data no">sample</div>
-              <div class="data id">sample</div>
-              <div class="data title">sampleText</div>
-            </div>
-            <div class="right-value row-box">
-              <div class="data date">sampleText</div>
-              <div class="data views">sampleText</div>
-            </div>
+            <tr>
+
+              <td class="data no">sample</td >
+              <td class="data id">sample</td >
+              <td class="data title">sampleText</td >
+              <td class="data date">sampleText</td >
+              <td class="data views">sampleText</td >
+            </tr>
           `;
 
   return row;
 }
 
 function appendHeadRow() {
-  row = getRow();
+  const row = document.createElement("table");
+  row.innerHTML = ` 
+    <thead>
+      <tr>
+        <th class="data no">sample</th>
+        <th class="data id">sample</th>
+        <th class="data title">sampleText</th>
+        <th class="data date">sampleText</th>
+        <th class="data views">sampleText</th>
+      </tr>
+    </thead>
+    
+`;
+
+  console.log(row.innerHTML);
+
   row.setAttribute("class", "row-box head-row outer-box");
   document.querySelector(".table").append(row);
   row.style.borderWidth = "1px 0px 1px 0px";
