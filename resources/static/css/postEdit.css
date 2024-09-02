@@ -1,0 +1,25 @@
+.title-edit {
+  width: 80%;
+  border: 0px;
+  margin: 0px;
+  height: 40px;
+  padding-left: 1px;
+  font-size: 2rem;
+}
+
+.title-edit:focus {
+  /* border: 0px; */
+  outline: 0px;
+}
+
+.container {
+  width: 70%;
+}
+.row-box {
+  justify-content: space-between;
+}
+
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
