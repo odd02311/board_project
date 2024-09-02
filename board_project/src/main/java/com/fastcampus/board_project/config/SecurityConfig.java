@@ -37,7 +37,8 @@ public class SecurityConfig {
                                 "/articles/{articleId}",
                                 "/articles/detail",
                                 "articles/detail/{articleId}",
-                                "/articles/search-hashtag").permitAll()
+                                "/articles/search-hashtag"
+                        ).permitAll()
                         .anyRequest().authenticated())
                 .formLogin(Customizer.withDefaults())
                 .logout(logout -> logout

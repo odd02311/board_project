@@ -6,8 +6,13 @@
   color: inherit;
   /* text-align: center;
   align-items: center; */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
+
+html {
+  overflow: scroll;
+}
+
 button {
   background: inherit;
   border: none;
@@ -20,7 +25,7 @@ button {
 .row-box {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
 }
 
 .column-box {
@@ -28,6 +33,7 @@ button {
   flex-direction: column;
   justify-content: space-evenly;
 }
+
 li {
   list-style: none;
 }
