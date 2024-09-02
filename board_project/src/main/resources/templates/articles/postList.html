@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+
+    <link href="/css/init.css" rel="stylesheet"/>
+    <link href="/css/header.css" rel="stylesheet">
+    <link href="/css/postList.css" rel="stylesheet"/>
+    <script src="/js/postList.js"></script>
+</head>
+<body>
+
+<header id="header"></header>
+
+<div class="container">
+    <!-- 정적 테이블 구조 -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th>글 번호</th>
+            <th>작성자</th>
+            <th>제목</th>
+            <th>작성일</th>
+            <th>조회수</th>
+        </tr>
+        </thead>
+        <tbody id="table-body">
+        <!-- 여기에 동적으로 데이터를 추가 -->
+        </tbody>
+    </table>
+
+    <!-- 정적 페이지네이션 -->
+    <nav class="pagination">
+        <ul>
+            <li><a href="#" id="prev-btn">prev</a></li>
+            <!-- 여기에 페이지 번호를 동적으로 추가 -->
+            <li><a href="#" id="next-btn">next</a></li>
+        </ul>
+    </nav>
+</div>
+
+<!-- <footer id="footer"></footer> -->
+
+</body>
+</html>
