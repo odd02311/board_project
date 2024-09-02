@@ -64,6 +64,8 @@ h1 {
 .head-row {
   box-shadow: 0px 3px 3px -3px rgb(241, 241, 241),
     0px -3px 3px -3px rgb(241, 241, 241);
+
+  border-width: 1px 0px 1px 0px;
 }
 .table {
   width: 70%;
