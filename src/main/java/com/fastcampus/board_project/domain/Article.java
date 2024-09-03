@@ -84,8 +84,8 @@ public class Article extends AuditingFields{ // entity를 구성하는 필드 �
   @Override
   public boolean equals(Object o) { // 받이들인 Object o가
     if (this == o) return true; // article 인지 확인
-    if (!(o instanceof Article article)) return false; // articcle 인지 맞다면 false로 넘어가서
-    return id != null && id.equals(article.id); // 동등성 검사
+    if (!(o instanceof Article that)) return false;
+    return id != null && id.equals(that.getId());
   }
 
   @Override
