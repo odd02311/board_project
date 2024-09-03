@@ -23,3 +23,19 @@ hr {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.post-header {
+  justify-content: space-between;
+}
+
+.post-header button {
+  width: 110px;
+  border-radius: 15px/15px;
+  font-size: 1.3rem;
+}
+
+.post-header button:hover {
+  transition-duration: 0.3s;
+  background: #000;
+  color: white;
+}
