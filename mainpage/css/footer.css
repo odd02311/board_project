@@ -1,0 +1,36 @@
+.container {
+    width: 70%;
+    /* text-align: center;
+    align-items: center; */
+    justify-content: center;
+    display: flex;
+  }
+  .column-box {
+    width: 500px;
+    text-align: center;
+    align-items: center;
+  }
+  .names > * {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .container > .column-box > div:nth-child(2) {
+    justify-content: center;
+  }
+  
+  .icons > * {
+    margin: 10px;
+  }
+  
+  footer {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 125px;
+    padding: 10px;
+    background: #424242;
+    color: rgb(255, 255, 255);
+    justify-content: center;
+    display: flex;
+  }
+  

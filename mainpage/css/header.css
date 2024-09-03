@@ -1,6 +1,6 @@
 /* 모든 요소의 기본 스타일 설정 */
 * {
-  text-align: center; /* 텍스트를 가운데 정렬 */
+  text-align: center; /*텍스트를 가운데 정렬 */
   align-items: center; /* Flexbox 항목을 수직으로 가운데 정렬 */
   overflow: visible; /* 넘치는 콘텐츠가 보이도록 설정 */
 }

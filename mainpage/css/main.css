@@ -1,0 +1,99 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.main-container {
+    max-width: 100%;
+    height: 100%;
+    background-color: #424242;
+    display: flex;
+    flex-direction: column; /* 자식 요소들을 수직으로 정렬 */
+    align-items: center; /* 가로 중앙 정렬 */
+    justify-content: center; /* 세로 중앙 정렬 */
+    margin: 0 auto;
+    box-sizing: border-box; /* padding과 border를 포함한 전체 크기 계산 */
+}
+
+.main-box {
+    display: flex;
+    align-items: center;
+    gap: 220px;
+    padding: 20px;
+    width: 100%;
+    height: 40%;
+    background-color: white;
+    margin-top: -10%;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.main-word {
+    padding-left: 280px;
+    max-width: 40%; /* 텍스트 영역의 최대 너비 설정 */
+}
+
+.main-word h1 {
+    font-size: 4rem;
+    margin: 0;
+    padding: 0;
+    color: #000;
+}
+
+.main-word p {
+    font-size: 1.2em;
+    color: #000;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.main-box img {
+    max-width: 100%; /* 이미지가 부모 요소를 넘지 않도록 설정 */
+    height: auto; /* 이미지 높이는 자동으로 비율에 맞게 조정 */
+    border-radius: 5px; /* 이미지 모서리 둥글게 설정 */
+}
+
+.card-container {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    padding: 40px;
+    margin-bottom: -10rem;
+}
+
+.card {
+    background-color: #424242;
+    border-radius: 8px;
+    width: 18rem;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #000;
+}
