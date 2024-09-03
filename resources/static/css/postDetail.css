@@ -24,6 +24,7 @@
 }
 
 .user-profile {
+  width: 150px;
   justify-content: space-between;
 }
 
@@ -57,7 +58,6 @@ img {
 }
 .title-section {
   width: 70%;
-
   justify-content: space-between;
 }
 
@@ -67,17 +67,13 @@ img {
 }
 
 .date {
-  transform: translateY(60%);
+  transform: translateY(50%);
 }
 
 .profile {
   border-radius: 100%;
   overflow: hidden;
-}
-
-.user-info {
-  width: 200 px;
-  margin: 10px;
+  width: 20%;
 }
 
 .comment-text {
@@ -98,4 +94,29 @@ img {
   height: 80px;
   padding-left: 1px;
   font-size: 1rem;
+}
+
+.user-info-box {
+  margin-left: 10px;
+  display: flex;
+  justify-content: start;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 10px;
+}
+
+.user-profile > span {
+  font-size: 1rem;
+}
+
+.edit-delete > * {
+  margin-right: 5px;
+}
+
+.edit-delete > *:hover {
+  font-weight: bold;
 }
