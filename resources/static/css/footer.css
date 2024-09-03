@@ -32,12 +32,15 @@ footer {
   color: rgb(255, 255, 255);
   justify-content: center;
   display: flex;
-  position: relative;
-  transform: translateY(100%);
+}
+
+html,
+body {
+  height: 100vh;
 }
 
 #wrapper {
-  /* height: auto; */
+  height: auto;
   min-height: 100%;
-  /* padding-bottom: 500px; */
+  padding-bottom: 125px;
 }
