@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="../static/css/init.css" />
     <link rel="stylesheet" href="../static/css/header.css" />
     <link rel="stylesheet" href="../static/css/postEdit.css" />
+    <link rel="stylesheet" href="../static/css/footer.css" />
+
   </head>
   <body>
     <div class="center">
@@ -48,31 +50,45 @@
           </ul>
         </nav>
       </header>
-    <div class="post-edit">
-      <div class="post-header row-box">
-          <input class = "title-edit" type="text" placeholder="제목을 입력하세요."></span>
-          <div class="edit-delete row-box">
-            <button>저장</button>
-          </div>
+      <div class="post-edit">
+        <div class="post-header row-box">
+            <input class = "title-edit" type="text" placeholder="제목을 입력하세요."></span>
+            <div class="edit-delete row-box">
+              <button>저장</button>
+            </div>
+        </div>
+        <hr />
+        <div class="main-text">
+          <form method="post">
+            <div id="summernote"><p>Hello Summernote</p></div>
+          </form>
+        </div>
+        <hr />
       </div>
-      <hr />
-      <div class="main-text">
-        <form method="post">
-          <div id="summernote"><p>Hello Summernote</p></div>
-        </form>
-      </div>
-      <hr />
+
     </div>
 
-  </div>
+
+    <footer>
+      <div class="column-box footer">
+        <div class="names row-box">
+          <span>text</span><span>text</span><span>text</span><span>text</span>
+        </div>
+        <div class="icons row-box">
+          <i class="fa-solid fa-circle-info"></i>
+          <i class="fa-solid fa-truck-fast"></i>
+          <i class="fa-solid fa-bookmark"></i>
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+
+        <span>CompanyName @ 202X. All rights reserved.</span>
+      </div>
+    </footer>
     <script>
       $(document).ready(function () {
         $("#summernote").summernote(
           {height : 500}
         );});
-
-
-
     </script>
   </body>
 </html>
