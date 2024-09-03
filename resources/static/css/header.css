@@ -63,9 +63,17 @@ li {
 
 li:hover,
 .clickable:hover {
-  transition-duration: 0.3s;
+  /* transition-duration: 0.3s; */
   background: white;
   color: black;
+}
+
+li:hover {
+  animation: change-width 0.5s ease-in-out;
+}
+
+.clickable:hover {
+  animation: change-width-large 1s ease-in-out;
 }
 
 .logo-box {
@@ -76,4 +84,44 @@ li:hover,
 }
 .service-name {
   font-size: 1.5rem;
+}
+
+.logo:hover {
+  animation: move 1s infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes change-width {
+  0% {
+    width: 70px;
+  }
+  50% {
+    width: 75px;
+  }
+  100% {
+    width: 70px;
+  }
+}
+
+@keyframes change-width-large {
+  0% {
+    width: 150px;
+  }
+  50% {
+    width: 155px;
+  }
+  100% {
+    width: 150px;
+  }
 }
