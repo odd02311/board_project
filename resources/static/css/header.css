@@ -61,14 +61,14 @@ li {
   border-radius: 25px / 25px;
 }
 
-li:hover,
+.header-list:hover,
 .clickable:hover {
   /* transition-duration: 0.3s; */
   background: white;
   color: black;
 }
 
-li:hover {
+.header-list:hover {
   animation: change-width 0.5s ease-in-out;
 }
 
