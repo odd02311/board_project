@@ -99,6 +99,35 @@ table {
   width: 100%;
 }
 
+.search-bar {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.search-bar input {
+  height: 50px;
+  margin: 10px;
+  border: 1px solid rgb(228, 228, 228);
+  /* border-color: rgb(175, 175, 175); */
+  width: 90%;
+  border-radius: 20px/20px;
+  text-align: center;
+}
+.search-bar button {
+  transition-duration: 0.3s;
+  height: 50px;
+  width: 70px;
+  border-radius: 20px/20px;
+}
+
+.search-bar button:hover {
+  background: #000;
+  color: white;
+}
+
 .board-title {
   font-size: 4rem;
   width: 70%;
