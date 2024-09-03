@@ -1,15 +1,25 @@
 package com.fastcampus.board_project.config;
 
 
+import com.fastcampus.board_project.dto.UserAccountDto;
+import com.fastcampus.board_project.dto.security.BoardPrincipal;
+import com.fastcampus.board_project.repository.UserAccountRepository;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class SecurityConfig {
@@ -39,17 +49,44 @@ public class SecurityConfig {
 //          .logout(logout -> logout
 //              .logoutSuccessUrl("/").permitAll()).build();
 //  }
-      return http
+      return  http
               .authorizeHttpRequests(auth -> auth
-                      .requestMatchers("/login").permitAll() // 로그인 페이지는 접근 허용
-                      .anyRequest().permitAll()  // 다른 모든 요청도 접근 허용
+                      // 정적 리소스 접근 허용
+                      .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                      // 특정 GET 요청 허용
+                      .requestMatchers(HttpMethod.GET, "/", "/articles", "/articles/search-hashtag").permitAll()
+                      // 그 외 모든 요청은 인증 필요
+                      .anyRequest().authenticated()
               )
-              .formLogin(formLogin -> formLogin
-                      .loginPage("/login")  // 로그인 페이지의 URL 설정
-                      .permitAll()  // 로그인 페이지 접근은 인증 없이 허용
-              )
-              .logout(LogoutConfigurer::permitAll  // 로그아웃은 인증 없이 허용
+              .formLogin(withDefaults())
+              .logout(logout -> logout
+                      .logoutSuccessUrl("/")
               )
               .build();
+
   }
+
+  @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+
+      return(web) -> web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+  }
+
+  @Bean
+    public UserDetailsService userDetailsService(UserAccountRepository userAccountRepository) {
+      return username -> userAccountRepository
+              .findById(username)
+              .map(UserAccountDto::from)
+              .map(BoardPrincipal::from)
+              .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다 - username: " + username));
+
+
+  }
+
+  @Bean
+    public PasswordEncoder passwordEncoder() {
+      return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+  }
+
+
 }
