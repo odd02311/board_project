@@ -46,3 +46,10 @@ a:active {
 a:hover {
   color: #a00;
 }
+
+.center {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+}

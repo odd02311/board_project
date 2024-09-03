@@ -1,4 +1,5 @@
 header {
+  align-items: center;
   width: 80%;
   margin: 20px;
   margin-bottom: 40px;
@@ -23,6 +24,8 @@ li {
   overflow: visible;
 }
 .logo-box {
+  align-items: center;
+
   width: 150px;
   justify-content: space-evenly;
 }
