@@ -32,14 +32,26 @@
 } */
 
 .title {
-  width: 70%;
+  overflow: hidden;
+  width: 60%;
 }
 .no {
-  width: 10%;
+  overflow: hidden;
+  width: 5%;
 }
 
 .id {
-  width: 20%;
+  overflow: hidden;
+  width: 12.5%;
+}
+
+.date {
+  overflow: hidden;
+  width: 12.5%;
+}
+.views {
+  overflow: hidden;
+  width: 10%;
 }
 
 .pagination {
@@ -51,12 +63,6 @@
   border: 1px solid rgb(245, 245, 245);
 
   border-width: 0px 0px 1px 0px;
-}
-
-h1 {
-  width: 70%;
-  text-align: left;
-  font-size: 5rem;
 }
 
 .head-row {
@@ -99,7 +105,8 @@ table {
 }
 
 .board-title span {
-  font-size: 4rem;
+  /* font-weight: bold; */
+  font-size: 6rem;
   display: inline-block;
   animation: bounce 0.5s ease;
 }
