@@ -31,11 +31,6 @@
   justify-content: space-evenly;
 } */
 
-.title {
-  overflow: hidden;
-  width: 60%;
-}
-
 tbody .title {
   text-align: left;
 }
@@ -44,18 +39,24 @@ tbody .title {
   width: 5%;
 }
 
+.title {
+  overflow: hidden;
+  width: 60%;
+}
+
+.hashtag {
+  overflow: hidden;
+  width: 10%;
+}
+
 .id {
   overflow: hidden;
-  width: 12.5%;
+  width: 10%;
 }
 
 .date {
   overflow: hidden;
-  width: 12.5%;
-}
-.views {
-  overflow: hidden;
-  width: 10%;
+  width: 15%;
 }
 
 .pagination {
