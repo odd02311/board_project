@@ -35,6 +35,10 @@
   overflow: hidden;
   width: 60%;
 }
+
+tbody .title {
+  text-align: left;
+}
 .no {
   overflow: hidden;
   width: 5%;
