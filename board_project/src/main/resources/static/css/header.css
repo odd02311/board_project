@@ -43,7 +43,9 @@ header > * > * {
 /* ul: 리스트 스타일 설정 */
 ul {
   display: flex; /* 플렉스박스를 사용하여 리스트 항목 배치 */
+  justify-content: center;
   width: 400px; /* 리스트의 너비 설정 */
+
 }
 /* li: 리스트 항목 스타일 설정 */
 li {
