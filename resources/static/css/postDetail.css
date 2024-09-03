@@ -20,6 +20,7 @@
   padding: 20px;
   text-align: left;
   align-items: left;
+  min-height: 500px;
 }
 
 .user-profile {
@@ -62,7 +63,7 @@ img {
 
 * {
   text-overflow: ellipsis;
-  margin: 1px;
+  /* margin: 1px; */
 }
 
 .date {
