@@ -1,11 +1,11 @@
-.container {
-  width: 70%;
-  /* text-align: center;
-  align-items: center; */
+.footer {
+  width: 100%;
+  text-align: center;
+  align-items: center;
   justify-content: center;
   display: flex;
 }
-.column-box {
+.column-box footer {
   width: 500px;
   text-align: center;
   align-items: center;
@@ -15,7 +15,7 @@
   margin-right: 10px;
 }
 
-.container > .column-box > div:nth-child(2) {
+.footer > .column-box > div:nth-child(2) {
   justify-content: center;
 }
 
@@ -28,7 +28,7 @@ footer {
   text-overflow: ellipsis;
   height: 125px;
   padding: 10px;
-  background: #424242;
+  background: black;
   color: rgb(255, 255, 255);
   justify-content: center;
   display: flex;

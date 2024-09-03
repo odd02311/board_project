@@ -1,11 +1,7 @@
-* {
-  text-align: center;
-  align-items: center;
-  overflow: visible;
-}
-
 header {
+  width: 80%;
   margin: 20px;
+  margin-bottom: 40px;
   height: 75px;
   display: flex;
   flex-direction: row;
@@ -19,6 +15,12 @@ header {
   display: flex;
   width: 190px;
   justify-content: start;
+}
+
+li {
+  text-align: center;
+  align-items: center;
+  overflow: visible;
 }
 .logo-box {
   width: 150px;
