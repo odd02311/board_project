@@ -65,6 +65,12 @@
                 </article>
             </div>
 
+            <form th:action="@{'/comments/new'}" method="post" class="addComment row-box">
+                <input class="comment-text-input" type="text" name="content" required/>
+                <input type="hidden" name="articleId" th:value="${article.id}">
+                <button class="submit-btn">submit</button>
+            </form>
+
             <hr/>
 
             <div class="comment-box" th:each="comment: ${articleComments}">
@@ -87,23 +93,29 @@
                     </div>
 
                     <div class="edit-delete">
-                        <button>수정</button>
-                        <button>삭제</button>
+
+                        <form th:action="@{'/comments/' + ${comment.id} + '/edit'}" method="get">
+                            <button type="submit">수정</button>
+                        </form>
+
+                        <form th:action="@{'/comments/' + ${comment.id} + '/delete'}" method="post">
+                            <input type="hidden" th:name="articleId" th:value="${article.id}"/>
+                            <button type="submit">삭제</button>
+                        </form>
                     </div>
                 </div>
 
                 <div class="comment-text">
               <span th:text="${comment.content}">
-                  댓글 내용
+                  댓글 내용 부분
               </span>
                 </div>
             </div>
+
+
             <hr/>
 
-            <div class="addComment row-box">
-                <input class="comment-text-input" type="text"/>
-                <button class="submit-btn">submit</button>
-            </div>
+
         </div>
     </div>
 </div>

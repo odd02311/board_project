@@ -10,7 +10,13 @@ public enum SearchType {
     NICKNAME("닉네임"),
     HASHTAG("해시태그");
 
-    // 대소문자 구분 없이 처리할 수 있는 변환 메서드를 추가
+    @Getter
+    private final String description;
+
+    SearchType(String description) {
+        this.description = description;
+    }
+
     public static SearchType fromString(String value) {
         for (SearchType type : SearchType.values()) {
             if (type.name().equalsIgnoreCase(value)) {
@@ -18,12 +24,5 @@ public enum SearchType {
             }
         }
         throw new IllegalArgumentException("Unknown enum value: " + value);
-    }
-
-    @Getter
-    private final String description;
-
-    SearchType(String description) {
-        this.description = description;
     }
 }
