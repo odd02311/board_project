@@ -24,8 +24,8 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 public class SecurityConfig {
 
-  @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 //      return http
 //              .authorizeHttpRequests(auth -> auth.anyRequest().permitAll()) // 권한을 받아서 어떤 request든 다 열어줌
 //              .formLogin((formLogin) -> formLogin
@@ -49,55 +49,54 @@ public class SecurityConfig {
 //          .logout(logout -> logout
 //              .logoutSuccessUrl("/").permitAll()).build();
 //  }
-      return  http
-              .authorizeHttpRequests(auth -> auth
-                      .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                      .requestMatchers("/api/**").permitAll()
-                      .requestMatchers(
-                              HttpMethod.GET,
-                              "/",
-                              "/articles",
-                              "/articles/search-hashtag",
-                              "/articles/{articleId}",
-                              "/articles/form",
-                              "/signup",
-                              "/hashtags",
-                              "/articles/form",
-                              "/articles/{articleId}/form"
-                      ).permitAll()
+        return http
+                .authorizeHttpRequests(auth -> auth
+                                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                                .requestMatchers("/api/**").permitAll()
+                                .requestMatchers(
+                                        HttpMethod.GET,
+                                        "/",
+                                        "/articles",
+                                        "/articles/search-hashtag",
+                                        "/articles/{articleId}",
+                                        "/articles/form",
+                                        "/signup",
+                                        "/hashtags",
+                                        "/articles/form",
+                                        "/articles/{articleId}/form"
+                                ).permitAll()
 //                      .requestMatchers(HttpMethod.POST, "/articles/form",
 //                              "/articles/{articleId}/form", "/articles/{articleId}/delete").permitAll()
-                      .anyRequest().authenticated()
-              )
-              .formLogin(withDefaults())
-              .logout(logout -> logout.logoutSuccessUrl("/"))
-              .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
-              .build();
 
+                                .anyRequest().authenticated()
+                )
+                .formLogin(withDefaults())
+                .logout(logout -> logout.logoutSuccessUrl("/"))
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
+                .build();
+    }
 
-  }
-
-  @Bean
+    @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
 
-      return(web) -> web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
-  }
+        return (web) -> web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+    }
 
-  @Bean
+    @Bean
     public UserDetailsService userDetailsService(UserAccountRepository userAccountRepository) {
-      return username -> userAccountRepository
-              .findById(username)
-              .map(UserAccountDto::from)
-              .map(BoardPrincipal::from)
-              .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다 - username: " + username));
+        return username -> userAccountRepository
+                .findById(username)
+                .map(UserAccountDto::from)
+                .map(BoardPrincipal::from)
+                .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다 - username: " + username));
 
 
-  }
+    }
 
-  @Bean
+    @Bean
     public PasswordEncoder passwordEncoder() {
-      return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-  }
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }
 
 
 }

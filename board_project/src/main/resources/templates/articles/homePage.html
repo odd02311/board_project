@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/popup.css">
+</head>
+
+<body>
+
+
+<header th:replace="header/header :: header"></header>
+
+<main class="main-container">
+    <div class="main-box">
+        <div class="main-word">
+            <h1>Main Word</h1>
+            <p>main word main word main word main word main word main word main word main word main word main word
+                main word main word main word</p>
+        </div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTohFwdU4sY3J7mARcwIlradG-A3ojX5-1dfA&s"
+             alt="Main image">
+    </div>
+
+    <div class="card-container">
+        <div class="card">
+            <img src="https://picsum.photos/id/237/200/300" class="card-img-top" alt="Sample image 1">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://picsum.photos/seed/picsum/200/300" class="card-img-top" alt="Sample image 2">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://picsum.photos/200/300?grayscale" class="card-img-top" alt="Sample image 3">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="footer/footer :: footer"></footer>
+
+<!-- 로그인 팝업 HTML 추가 -->
+<div id="login-popup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-image-container">
+            <img src="../img/image_1.jpg" alt="Left Image">
+        </div>
+        <span class="popup-close">&times;</span>
+        <form id="login-form">
+            <div class="popup-container">
+                <div class="popup-mainword">
+                    <h2>Ready to connect with your favorite brand?</h2>
+                    <p>just given us the following details and we'll help you get conected</p>
+                </div>
+                <div class="popup-word">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Login</button>
+                    <button type="button">Sign-in</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/js/mainpage.js"></script>
+<script src="/js/popup.js"></script> <!-- 로그인 팝업을 위한 JS 추가 -->
+</body>
+
+</html>

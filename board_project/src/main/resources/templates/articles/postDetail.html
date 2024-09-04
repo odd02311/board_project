@@ -4,7 +4,6 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>상세 조회 페이지</title>
-
     <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -18,7 +17,6 @@
     <link rel="stylesheet" href="/css/footer.css"/>
     <link rel="stylesheet" href="/css/postDetail.css"/>
     <link rel="stylesheet" href="/css/popup.css"/>
-
 
 </head>
 
@@ -54,7 +52,6 @@
                 </form>
             </div>
         </div>
-
 
         <header th:replace="header/header :: header"></header>
 
@@ -118,6 +115,7 @@
 
                             <span class="date"
                                   th:text="${#temporals.format(article.createdAt, 'yyyy.MM.dd')}">작성 날짜</span>
+
                         </div>
                     </div>
 

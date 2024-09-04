@@ -79,8 +79,6 @@ tbody .title {
   border-width: 1px 0px 1px 0px;
 }
 
-
-
 /* 셀렉트 박스 스타일링 */
 .select-box {
   width: 15%; /* 테이블과 너비가 일치하도록 설정 */
@@ -92,7 +90,6 @@ tbody .title {
   margin-right: 10px; /* 검색창과의 간격 */
   /*appearance: none;  기본 셀렉트 화살표 제거 (브라우저마다 다를 수 있음) */
 }
-
 
 .table {
   width: 70%;

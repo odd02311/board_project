@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-console.log("실행");
-
   // 'open-login-popup' ID를 가진 버튼 요소 가져오기
   const openPopupButton = document.getElementById('open-login-popup');
   // 'login-popup' ID를 가진 팝업 오버레이 요소 가져오기
   const popupOverlay = document.getElementById('login-popup');
   // 'popup-close' 클래스를 가진 닫기 버튼 요소 가져오기
+
   const closePopupButton = popupOverlay ? popupOverlay.querySelector('.popup-close') : null;
 
   if (openPopupButton && popupOverlay && closePopupButton) {
@@ -30,4 +29,5 @@ console.log("실행");
   } else {
     console.error('Element(s) not found: Ensure the HTML elements have the correct IDs and classes.');
   }
+
 });

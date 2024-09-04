@@ -105,6 +105,7 @@ public class ArticleController {
     map.addAttribute("formStatus", FormStatus.UPDATE);
 
     return "articles/postForm";
+
   }
 
   @PostMapping ("/{articleId}/form")
