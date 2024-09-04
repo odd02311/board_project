@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+
+.title-edit {
+  width: 80%;
+  border: 0px;
+  margin: 0px;
+  height: 40px;
+  padding-left: 1px;
+  font-size: 1.5rem;
+}
+
+.title-edit:focus {
+  /* border: 0px; */
+  outline: 0px;
+}
+
+.post-edit {
+  width: 70%;
+}
+/* .row-box {
+  justify-content: space-between;
+} */
+
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.post-header {
+  justify-content: space-between;
+}
+
+.post-header button {
+  width: 110px;
+  border-radius: 15px/15px;
+  font-size: 1.3rem;
+}
+
+.post-header button:hover {
+  transition-duration: 0.3s;
+  background: #000;
+  color: white;
+}

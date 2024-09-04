@@ -1,0 +1,124 @@
+ @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+
+ .center {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-text {
+  padding-left: 20px;
+  font-size: 3rem;
+  /* font-weight: bold; */
+  color: rgb(0, 0, 0);
+}
+
+.main-text-container {
+  width: 70%;
+}
+
+.main-text {
+  padding: 20px;
+  text-align: left;
+  align-items: left;
+  min-height: 500px;
+}
+
+.user-profile {
+  width: 150px;
+  justify-content: space-between;
+}
+
+.user-info {
+  text-align: left;
+}
+
+.post-header {
+  justify-content: space-between;
+}
+
+.comment-header {
+  justify-content: space-between;
+}
+
+.addComment {
+  justify-content: space-between;
+}
+.addComment > input {
+  width: 90%;
+}
+
+img {
+  width: 45px;
+  height: 45px;
+  object-fit: scale-down;
+}
+
+.row-box {
+  align-items: center;
+}
+.title-section {
+  width: 70%;
+  justify-content: space-between;
+}
+
+* {
+  text-overflow: ellipsis;
+  /* margin: 1px; */
+}
+
+.date {
+  transform: translateY(50%);
+}
+
+.profile {
+  border-radius: 100%;
+  overflow: hidden;
+  width: 20%;
+}
+
+.comment-text {
+  padding: 20px;
+}
+
+.comment-text-input:focus {
+  /* border: 0px; */
+  /* outline: 5px; */
+  outline-color: rgb(245, 245, 245);
+}
+
+.comment-text-input {
+  width: 80%;
+  border: 1px solid rgb(223, 223, 223);
+
+  margin: 10px;
+  height: 80px;
+  padding-left: 1px;
+  font-size: 1rem;
+}
+
+.user-info-box {
+  margin-left: 10px;
+  display: flex;
+  justify-content: start;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 10px;
+}
+
+.user-profile > span {
+  font-size: 1rem;
+}
+
+.edit-delete > * {
+  margin-right: 5px;
+}
+
+.edit-delete > *:hover {
+  font-weight: bold;
+}

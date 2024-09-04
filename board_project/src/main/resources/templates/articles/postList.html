@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>글 목록 페이지</title>
+
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    />
+
+    <link href="/css/init.css" rel="stylesheet"/>
+    <link href="/css/header.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/postList.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/popup.css"/>
+
+</head>
+<body>
+
+
+<div id="wrapper">
+    <div class="center">
+
+        <!-- 로그인 팝업 HTML 추가 -->
+        <div id="login-popup" class="popup-overlay">
+            <div class="popup-content">
+                <div class="popup-image-container">
+                    <img src="../img/image_1.jpg" alt="Left Image">
+                </div>
+                <span class="popup-close">&times;</span>
+                <form id="login-form">
+                    <div class="popup-container">
+                        <div class="popup-mainword">
+                            <h2>Ready to connect with your favorite brand?</h2>
+                            <p>Just give us the following details and we'll help you get
+                                connected.</p>
+                        </div>
+                        <div class="popup-word">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" required>
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                            <button type="submit">Login</button>
+                            <button type="button">Sign In</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <header th:replace="header/header :: header"></header>
+
+        <div class="post-list">
+            <div class="board-title">
+                <span>B</span>
+                <span>o</span>
+                <span>a</span>
+                <span>r</span>
+                <span>d</span>
+                <span>T</span>
+                <span>i</span>
+                <span>t</span>
+                <span>l</span>
+                <span>e</span>
+            </div>
+
+
+            <form action="/articles" method="get" class="search-bar row-box">
+                <select name="searchType" class="select-box">
+                    <option value="title">제목</option>
+                    <option value="nickname">작성자</option>
+                </select>
+                <input class="title-edit" type="text" name="searchValue" placeholder="제목 및 작성자로 검색"/>
+                <div class="search row-box">
+                    <button type="submit">
+                        검색
+                    </button>
+                </div>
+            </form>
+
+
+            <div class="table">
+                <table>
+                    <thead>
+                    <tr class="row-box head-row outer-box">
+                        <th class="data no">No</th>
+                        <th class="data id">Author</th>
+                        <th class="data title">Title</th>
+                        <th class="data date">Date</th>
+                    </tr>
+                    </thead>
+
+                    <tbody th:each="article: ${articles.content}">
+                    <tr class="row-box outer-box">
+                        <td class="data no" th:text="${article.id}"></td>
+                        <td class="data id" th:text="${article.nickname}"></td>
+                        <td class="data title">
+                            <a th:href="@{'/articles/' +  ${article.id}}" th:text="${article.title}"></a>
+                        </td>
+                        <td class="data date" th:text="${article.createdAt}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="posting-button">
+                <a th:href="@{/articles/form}">글쓰기</a>
+            </div>
+
+            <nav class="pagination">
+                <ul>
+                    <li th:classappend="${articles.number == 0} ? 'disabled'">
+                        <a th:href="@{/articles(page=${articles.number - 1})}"
+                           th:disabled="${articles.number == 0}">prev</a>
+                    </li>
+                    <li th:each="pageNum : ${paginationBarNumbers}">
+                        <a th:href="@{'/articles?page=' + ${pageNum}}" th:text="${pageNum + 1}"
+                           th:classappend="${pageNum == articles.number} ? 'active' : '' "></a>
+                    </li>
+                    <li th:classappend="${articles.number == articles.totalPages - 1} ? 'disabled'">
+                        <a th:href="@{/articles(page=${articles.number + 1})}"
+                           th:disabled="${articles.number == articles.totalPages - 1}">next</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</div>
+<footer th:replace="footer/footer :: footer"></footer>
+
+<script src="/js/popup.js"></script> <!-- 로그인 팝업을 위한 JS 추가 -->
+
+
+</body>
+</html>

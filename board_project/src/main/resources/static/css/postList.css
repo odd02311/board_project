@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+
+.post-list {
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.data {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.head-row {
+  border-width: 0px 0px 1px 1px;
+}
+
+.post-list {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .left-value {
+  width: 100%;
+  justify-content: space-evenly;
+} */
+
+/* .right-value {
+  width: 30%;
+  justify-content: space-evenly;
+} */
+
+tbody .title {
+  text-align: left;
+}
+.no {
+  overflow: hidden;
+  width: 5%;
+}
+
+.title {
+  overflow: hidden;
+  width: 60%;
+}
+
+.hashtag {
+  overflow: hidden;
+  width: 10%;
+}
+
+.id {
+  overflow: hidden;
+  width: 10%;
+}
+
+.date {
+  overflow: hidden;
+  width: 15%;
+}
+
+.pagination {
+  margin-top: 2%;
+}
+
+.outer-box {
+  height: 40px;
+  border: 1px solid rgb(245, 245, 245);
+
+  border-width: 0px 0px 1px 0px;
+}
+
+.head-row {
+  box-shadow: 0px 3px 3px -3px rgb(241, 241, 241),
+    0px -3px 3px -3px rgb(241, 241, 241);
+
+  border-width: 1px 0px 1px 0px;
+}
+
+
+
+/* 셀렉트 박스 스타일링 */
+.select-box {
+  width: 15%; /* 테이블과 너비가 일치하도록 설정 */
+  height: 50px; /* 다른 입력 요소들과 높이 일치 */
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-right: 10px; /* 검색창과의 간격 */
+  /*appearance: none;  기본 셀렉트 화살표 제거 (브라우저마다 다를 수 있음) */
+}
+
+
+.table {
+  width: 70%;
+
+  /* display: flex; */
+  overflow: visible;
+}
+
+td {
+  white-space: nowrap;
+}
+
+tr,
+thead {
+  align-items: center;
+
+  /* display: flex; */
+  width: 100%;
+  justify-content: space-between;
+}
+
+table {
+  width: 100%;
+}
+
+.search-bar {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.search-bar input {
+  height: 50px;
+  margin: 25px 5px;
+  border: 1px solid rgb(228, 228, 228);
+  /* border-color: rgb(175, 175, 175); */
+  width: 90%;
+  border-radius: 20px/20px;
+  text-align: center;
+}
+.search-bar button {
+  transition-duration: 0.3s;
+  height: 50px;
+  width: 70px;
+  border-radius: 20px/20px;
+}
+
+.search-bar button:hover {
+  background: #000;
+  color: white;
+}
+
+.posting-button {
+  display: flex;
+  justify-content: right;
+  width: 70%;
+}
+
+.posting-button a {
+  transition-duration: 0.3s;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  text-align: center;
+  align-content: center;
+  height: 45px;
+  width: 70px;
+  border-radius: 15px/15px;
+}
+
+
+.board-title {
+  font-size: 4rem;
+  width: 70%;
+  display: flex;
+  align-items: start;
+  margin: 0;
+  padding: 0;
+}
+
+.board-title span {
+  /* font-weight: bold; */
+  font-size: 6rem;
+  display: inline-block;
+  animation: bounce 0.5s ease;
+}
+
+.board-title span:hover {
+  animation: bounce 0.5s ease infinite;
+}
+
+.board-title span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.board-title span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.board-title span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.board-title span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.board-title span:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.board-title span:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.board-title span:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.board-title span:nth-child(9) {
+  animation-delay: 0.8s;
+}
+
+.board-title span:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0px);
+  }
+  10% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

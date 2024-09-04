@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <link rel="stylesheet" href="/css/signup.css">
+    <link rel="stylesheet" href="/css/init.css"/>
+    <link rel="stylesheet" href="/css/header.css"/>
+    <link rel="stylesheet" href="/css/footer.css"/>
+    <link rel="stylesheet" href="/css/popup.css"/>
+
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>회원가입 페이지</title>
+</head>
+
+<body>
+
+<!-- 로그인 팝업 HTML 추가 -->
+<div id="login-popup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-image-container">
+            <img src="../img/image_1.jpg" alt="Left Image">
+        </div>
+        <span class="popup-close">&times;</span>
+        <form id="login-form">
+            <div class="popup-container">
+                <div class="popup-mainword">
+                    <h2>Ready to connect with your favorite brand?</h2>
+                    <p>Just give us the following details and we'll help you get
+                        connected.</p>
+                </div>
+                <div class="popup-word">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Login</button>
+                    <button type="button">Sign In</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="header-container">
+    <header th:replace="header/header :: header"></header>
+</div>
+
+<div class="signup-wrapper">
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div class="form-group">
+                <label for="occupation">Occupation</label>
+                <select id="occupation" name="occupation" class="select-dropdown">
+                    <option value="" disabled selected>Select Occupation</option>
+                    <option value="developer">Frontend</option>
+                    <option value="designer">Backend</option>
+                    <option value="manager">CSharp</option>
+                </select>
+            </div>
+            <button type="submit" class="signin-button">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+
+<footer th:replace="footer/footer :: footer"></footer>
+
+<script src="/js/popup.js"></script> <!-- 로그인 팝업을 위한 JS 추가 -->
+
+
+</body>
+
+</html>

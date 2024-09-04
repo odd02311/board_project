@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>공통 헤더 페이지</title>
+</head>
+<body>
+<header th:fragment="header">
+    <div class="left row-box">
+        <a th:href="@{/}" class="logo-box row-box clickable">
+            <div class="logo">
+                <i class="fa-solid fa-dumpster-fire fa-2xl"></i>
+            </div>
+            <div class="service-name">service</div>
+        </a
+        >
+
+        <div class="boards row-box">
+            <ul>
+                <li class="header-list"><a th:href="@{/articles}">Board</a></li>
+                <li class="header-list"><a th:href="@{/hashtags}">Hashtags</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <nav class="auth-buttons row-box">
+        <ul>
+            <li class="header-list"><a id="open-login-popup">Log In</a></li>
+            <li class="header-list"><a th:href="@{/signup}">Sign Up</a></li>
+        </ul>
+    </nav>
+</header>
+
+</body>
+</html>
