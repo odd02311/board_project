@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../static/css/init.css" />
+    <link rel="stylesheet" href="../static/css/header.css" />
+    <link rel="stylesheet" href="../static/css/postEdit.css" />
+    <link rel="stylesheet" href="../static/css/footer.css" />
+
+    <link rel="stylesheet" href="../static/css/bubbleChart.css" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>-->
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="center">
+        <header>
+          <div class="left row-box">
+            <a href="#" class="logo-box row-box clickable">
+              <div class="logo">
+                <i class="fa-solid fa-dumpster-fire fa-2xl"></i>
+              </div>
+              <div class="service-name">service</div></a
+            >
+
+            <div class="boards row-box">
+              <ul>
+                <li class="header-list"><a href="#">게시판</a></li>
+                <li class="header-list"><a href="#">게시판</a></li>
+                <li class="header-list"><a href="#">게시판</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <nav class="auth-buttons row-box">
+            <ul>
+              <li class="header-list">log-in</li>
+              <li class="header-list">sign-in</li>
+            </ul>
+          </nav>
+        </header>
+        <div class="hash-tag-section">
+          <div>
+            <figure class="highcharts-figure">
+              <div id="container"></div>
+              <div class="post-list"></div>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="column-box footer">
+        <div class="names row-box">
+          <span>text</span><span>text</span><span>text</span><span>text</span>
+        </div>
+        <div class="icons row-box">
+          <i class="fa-solid fa-circle-info"></i>
+          <i class="fa-solid fa-truck-fast"></i>
+          <i class="fa-solid fa-bookmark"></i>
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+
+        <span>CompanyName @ 202X. All rights reserved.</span>
+      </div>
+    </footer>
+
+    <script src="../script/bubbleChart.js"></script>
+  </body>
+</html>
