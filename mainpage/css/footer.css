@@ -1,36 +1,35 @@
 .container {
-    width: 70%;
-    /* text-align: center;
-    align-items: center; */
-    justify-content: center;
-    display: flex;
-  }
-  .column-box {
-    width: 500px;
-    text-align: center;
-    align-items: center;
-  }
-  .names > * {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  
-  .container > .column-box > div:nth-child(2) {
-    justify-content: center;
-  }
-  
-  .icons > * {
-    margin: 10px;
-  }
-  
-  footer {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: 125px;
-    padding: 10px;
-    background: #424242;
-    color: rgb(255, 255, 255);
-    justify-content: center;
-    display: flex;
-  }
-  
+  width: 70%; /* 컨테이너 너비를 화면의 70%로 설정 */
+  justify-content: center; /* 내부 요소들을 수평 중앙에 정렬 */
+  display: flex; /* 플렉스 박스로 설정하여 자식 요소들을 배치 */
+}
+
+.column-box {
+  width: 500px; /* 개별 박스의 너비를 500px로 설정 */
+  text-align: center; /* 텍스트를 중앙 정렬 */
+  align-items: center; /* 플렉스 컨테이너 내에서 요소들을 수직 중앙에 정렬 */
+}
+
+.names>* {
+  margin-left: 10px; /* 자식 요소의 왼쪽에 10px 간격 추가 */
+  margin-right: 10px; /* 자식 요소의 오른쪽에 10px 간격 추가 */
+}
+
+.container>.column-box>div:nth-child(2) {
+  justify-content: center; /* column-box 내 두 번째 div를 수평 중앙에 정렬 */
+}
+
+.icons>* {
+  margin: 10px; /* 각 아이콘 요소 주변에 10px의 여백 추가 */
+}
+
+footer {
+  overflow: hidden; /* 넘치는 콘텐츠를 숨김 */
+  text-overflow: ellipsis; /* 넘치는 텍스트를 줄임표(...)로 표시 */
+  height: 125px; /* 푸터의 높이를 125px로 설정 */
+  padding: 10px; /* 내부 여백을 10px로 설정 */
+  background: #424242; /* 푸터의 배경색을 어두운 회색(#424242)으로 설정 */
+  color: rgb(255, 255, 255); /* 텍스트 색상을 흰색으로 설정 */
+  justify-content: center; /* 내부 요소들을 수평 중앙에 정렬 */
+  display: flex; /* 플렉스 박스로 설정하여 자식 요소들을 배치 */
+}

@@ -1,49 +1,47 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font: inherit;
-    color: inherit;
-    /* text-align: center;
-    align-items: center; */
-    /* overflow: hidden; */
-  }
-  
-  html {
-    overflow: scroll;
-  }
-  
-  button {
-    background: inherit;
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    padding: 0;
-    overflow: visible;
-    cursor: pointer;
-  }
-  .row-box {
-    display: flex;
-    flex-direction: row;
-    /* justify-content: space-evenly; */
-  }
-  
-  .column-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-  }
-  li {
-    list-style: none;
-  }
-  
-  a:hover,
-  a:visited,
-  a:link,
-  a:active {
-    text-decoration: none;
-  }
-  a:hover {
-    color: #a00;
-  }
-  
+  margin: 0; /* 모든 요소의 기본 외부 여백(margin)을 0으로 설정 */
+  padding: 0; /* 모든 요소의 기본 내부 여백(padding)을 0으로 설정 */
+  box-sizing: border-box; /* 요소의 너비와 높이에 패딩과 테두리 포함 */
+  font: inherit; /* 부모 요소의 폰트 설정을 상속받음 */
+  color: inherit; /* 부모 요소의 텍스트 색상을 상속받음 */
+}
+
+html {
+  overflow: scroll; /* HTML 문서가 넘칠 경우 스크롤 가능하도록 설정 */
+}
+
+button {
+  background: inherit; /* 부모 요소의 배경을 상속받음 */
+  border: none; /* 버튼의 기본 테두리를 제거 */
+  box-shadow: none; /* 버튼의 그림자 효과 제거 */
+  border-radius: 0; /* 버튼의 모서리를 직각으로 설정 */
+  padding: 0; /* 버튼의 기본 패딩을 제거 */
+  overflow: visible; /* 넘치는 콘텐츠가 보이도록 설정 */
+  cursor: pointer; /* 마우스를 올리면 포인터(손가락) 커서로 변경 */
+}
+
+.row-box {
+  display: flex; /* 플렉스박스로 설정하여 자식 요소들을 배치 */
+  flex-direction: row; /* 자식 요소들을 가로 방향으로 배치 */
+}
+
+.column-box {
+  display: flex; /* 플렉스박스로 설정하여 자식 요소들을 배치 */
+  flex-direction: column; /* 자식 요소들을 세로 방향으로 배치 */
+  justify-content: space-evenly; /* 자식 요소들 사이의 간격을 균등하게 배치 */
+}
+
+li {
+  list-style: none; /* 리스트 아이템의 기본 불릿 포인트를 제거 */
+}
+
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none; /* 링크의 밑줄을 제거 */
+}
+
+a:hover {
+  color: #a00; /* 링크에 마우스를 올렸을 때 텍스트 색상을 어두운 빨간색으로 변경 (#a00) */
+}
