@@ -124,9 +124,24 @@ table {
   border-radius: 20px/20px;
 }
 
-.search-bar button:hover {
+.search-bar button:hover,
+.posting-button a:hover {
   background: #000;
   color: white;
+}
+.posting-button {
+  display: flex;
+  justify-content: right;
+  width: 70%;
+}
+.posting-button a {
+  transition-duration: 0.3s;
+  margin-top: 10px;
+  text-align: center;
+  align-content: center;
+  height: 45px;
+  width: 70px;
+  border-radius: 15px/15px;
 }
 
 .board-title {
