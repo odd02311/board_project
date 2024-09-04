@@ -8,12 +8,16 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/popup.css">
+    <link rel="stylesheet" href="../css/init.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+    </style>
 </head>
 
 <body>
     <header>
         <div class="left row-box">
-            <div class="logo-box row-box">
+            <div class="logo-box row-box clickable">
                 <div class="logo">
                     <a class="fa-solid fa-dumpster-fire fa-2xl"></a>
                 </div>
@@ -22,17 +26,17 @@
 
             <div class="boards row-box">
                 <ul>
-                    <li><a href="#">게시판</a></li>
-                    <li><a href="#">게시판</a></li>
-                    <li><a href="#">게시판</a></li>
+                    <li class="header-list"><a href="h">게시판</a></li>
+                    <li class="header-list"><a href="#">게시판</a></li>
+                    <li class="header-list"><a href="#">게시판</a></li>
                 </ul>
             </div>
         </div>
 
         <nav class="auth-buttons row-box">
             <ul>
-                <li><a href="#" id="open-login-popup">Log In</a></li>
-                <li><a href="#">Sign In</a></li>
+                <li class="header-list"><a href="#" id="open-login-popup">Log In</a></li>
+                <li class="header-list"><a href="#">Sign In</a></li>
             </ul>
         </nav>
     </header>
@@ -89,9 +93,9 @@
                 <div class="popup-container">
                     <div class="popup-mainword">
                         <h2>Ready to connect with your favorite brand?</h2>
-                        <p>just given us the following details and we'll help you get conected</p>
+                        <p>Just give us the following details and we'll help you get connected.</p>
                     </div>
-                        <div class="popup-word">
+                    <div class="popup-word">
                         <label for="username">Username</label>
                         <input type="text" id="username" name="username" required>
                         <label for="password">Password</label>
