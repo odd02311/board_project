@@ -1,4 +1,4 @@
-Highcharts.chart("container", {
+const chart = Highcharts.chart("container", {
   chart: {
     type: "packedbubble",
     height: "50%",
@@ -16,14 +16,17 @@ Highcharts.chart("container", {
   //     pointFormat: "<b>{point.name}:</b> {point.value}m CO<sub>2</sub>",
   //   },
   plotOptions: {
+    // series: {
+    //   animation: false,
+    // },
     packedbubble: {
-      minSize: "30%",
+      minSize: "40%",
       maxSize: "100%",
       zMin: 0,
       zMax: 1000,
       layoutAlgorithm: {
         splitSeries: true,
-        gravitationalConstant: 0.01,
+        gravitationalConstant: 0.03,
       },
       dataLabels: {
         enabled: true,
@@ -41,20 +44,25 @@ Highcharts.chart("container", {
       },
     },
   },
+  //   series: {
+  //     animation: { duration: 100 },
+  //     allowPointSelect: true,
+  //   },
   series: [
     {
-      name: "Europe",
+      allowPointSelect: true,
+      name: "fornt-end",
       data: [
         {
-          name: "Germany",
+          name: "Html",
           value: 673.6,
         },
         {
-          name: "Croatia",
+          name: "Css",
           value: 5000.2,
         },
         {
-          name: "Belgium",
+          name: "Js",
           value: 90.4,
           events: {
             click: function () {
@@ -71,82 +79,48 @@ Highcharts.chart("container", {
       },
     },
     {
-      name: "Africa",
+      allowPointSelect: true,
+      name: "Back-end",
       data: [
         {
-          name: "Senegal",
+          name: "Java",
           value: 12.1,
         },
         {
-          name: "Cameroon",
-          value: 10.1,
+          name: "Spring",
+          value: 11,
         },
         {
-          name: "Zimbabwe",
+          name: "Flask",
           value: 10.2,
         },
       ],
       color: "rgba(255,255,255,0)",
     },
     {
-      name: "Oceania",
+      allowPointSelect: true,
+      name: "CSharp",
       data: [
         {
-          name: "Australia",
+          name: ".Net",
           value: 393.2,
         },
         {
-          name: "New Zealand",
+          name: "MaUI",
           value: 32.4,
         },
         {
-          name: "Papua New Guinea",
+          name: "WPF",
           value: 4.7,
         },
       ],
       color: "rgba(255,255,255,0)",
     },
-    {
-      name: "North America",
-      data: [
-        {
-          name: "Costa Rica",
-          value: 8.6,
-        },
-        {
-          name: "Honduras",
-          value: 10.6,
-        },
-        {
-          name: "Jamaica",
-          value: 6.1,
-        },
-      ],
-      color: "rgba(255,255,255,0)",
-    },
-    {
-      name: "South America",
-      data: [
-        {
-          name: "El Salvador",
-          value: 8.0,
-        },
-      ],
-      color: "rgba(255,255,255,0)",
-    },
-    {
-      name: "Asia",
-      data: [
-        {
-          name: "Nepal",
-          value: 15.8,
-        },
-        {
-          name: "Georgia",
-          value: 12.0,
-        },
-      ],
-      color: "rgba(255,255,255,0)",
-    },
   ],
+});
+
+document.getElementById("button").addEventListener("click", () => {
+  const selectedPoints = chart.getSelectedPoints();
+
+  console.log(selectedPoints[0].name);
 });
