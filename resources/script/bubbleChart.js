@@ -1,3 +1,7 @@
+// https://api.highcharts.com/highcharts/tooltip
+// 차트 매뉴얼
+//
+
 const chart = Highcharts.chart("container", {
   chart: {
     type: "packedbubble",
@@ -34,12 +38,8 @@ const chart = Highcharts.chart("container", {
       },
       dataLabels: {
         enabled: true,
-        format: "{point.name}",
-        /*               filter: {
-                            property: 'y',
-                            operator: '>',
-                            value: 250
-                        }, */
+        format:
+          "{point.name}" /*filter: {property: 'y', operator: '>', value: 250}, 값 필터 걸수 있음!*/,
         style: {
           color: "black",
           textOutline: "none",

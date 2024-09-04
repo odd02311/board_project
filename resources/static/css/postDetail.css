@@ -95,6 +95,17 @@ img {
   padding-left: 1px;
   font-size: 1rem;
 }
+.submit-btn {
+  transition-duration: 0.3s;
+  width: 90px;
+  height: 80px;
+  border-radius: 25px/25px;
+}
+
+.submit-btn:hover {
+  background: #000;
+  color: white;
+}
 
 .user-info-box {
   margin-left: 10px;
