@@ -50,6 +50,7 @@ public class SecurityConfig {
               )
               .logout(LogoutConfigurer::permitAll  // 로그아웃은 인증 없이 허용
               )
+              .csrf((csrf) -> csrf.disable())
               .build();
   }
 }

@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>글 목록 페이지</title>
 
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    />
+
     <link href="/css/init.css" rel="stylesheet"/>
     <link href="/css/header.css" rel="stylesheet">
     <link href="/css/footer.css" rel="stylesheet">
@@ -12,66 +20,83 @@
 </head>
 <body>
 
-<header th:replace="header/header :: header"></header>
 
-<div class="container">
+<div id="wrapper">
+    <div class="center">
+        <header th:replace="header/header :: header"></header>
 
-    <div class="search-container">
-        <form action="/articles" method="get" class="search-box">
-            <input type="search" name="searchValue" placeholder="제목 및 작성자로 검색" />
-            <select name="searchType">
-                <option value="title">제목</option>
-                <option value="nickname">작성자</option>
-            </select>
-            <button type="submit">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-            </button>
-        </form>
+        <div class="post-list">
+            <div class="board-title">
+                <span>B</span>
+                <span>o</span>
+                <span>a</span>
+                <span>r</span>
+                <span>d</span>
+                <span>T</span>
+                <span>i</span>
+                <span>t</span>
+                <span>l</span>
+                <span>e</span>
+            </div>
+
+
+            <form action="/articles" method="get" class="search-bar row-box">
+                <select name="searchType">
+                    <option value="title">제목</option>
+                    <option value="nickname">작성자</option>
+                </select>
+                <input class="title-edit" type="text" name="searchValue" placeholder="제목 및 작성자로 검색"/>
+                <div class="search row-box">
+                    <button type="submit">
+                        검색
+                    </button>
+                </div>
+            </form>
+
+
+            <div class="table">
+                <table>
+                    <thead>
+                    <tr class="row-box head-row outer-box">
+                        <th class="data no">no</th>
+                        <th class="data id">Author</th>
+                        <th class="data title">Title</th>
+                        <th class="data date">Date</th>
+                    </tr>
+                    </thead>
+
+                    <tbody th:each="article: ${articles.content}">
+                    <tr class="row-box outer-box">
+                        <td class="data no" th:text="${article.id}"></td>
+                        <td class="data id" th:text="${article.nickname}"></td>
+                        <td class="data title">
+                            <a th:href="@{'/articles/' +  ${article.id}}" th:text="${article.title}"></a>
+                        </td>
+                        <td class="data date" th:text="${article.createdAt}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <nav class="pagination">
+                <ul>
+                    <li th:classappend="${articles.number == 0} ? 'disabled'">
+                        <a th:href="@{/articles(page=${articles.number - 1})}"
+                           th:disabled="${articles.number == 0}">prev</a>
+                    </li>
+                    <li th:each="pageNum : ${paginationBarNumbers}">
+                        <a th:href="@{'/articles?page=' + ${pageNum}}" th:text="${pageNum + 1}"
+                           th:classappend="${pageNum == articles.number} ? 'active' : '' "></a>
+                    </li>
+                    <li th:classappend="${articles.number == articles.totalPages - 1} ? 'disabled'">
+                        <a th:href="@{/articles(page=${articles.number + 1})}"
+                           th:disabled="${articles.number == articles.totalPages - 1}">next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
-
-    <div class="table-wrapper">
-        <table class="table">
-            <thead>
-            <tr class="row-box head-row outer-box">
-                <th class="data no">글번호</th>
-                <th class="data id">작성자</th>
-                <th class="data title">제목</th>
-                <th class="data date">작성일</th>
-            </tr>
-            </thead>
-
-            <tbody th:each="article: ${articles.content}">
-            <tr class="row-box outer-box">
-                <td class="data no" th:text="${article.id}"></td>
-                <td class="data id" th:text="${article.nickname}"></td>
-                <td class="data title" th:text="${article.title}"></td>
-                <td class="data date" th:text="${article.createdAt}"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <nav class="pagination">
-        <ul>
-            <li th:classappend="${articles.number == 0} ? 'disabled'">
-                <a th:href="@{/articles(page=${articles.number - 1})}"
-                   th:disabled="${articles.number == 0}">prev</a>
-            </li>
-            <li th:each="pageNum : ${paginationBarNumbers}">
-                <a th:href="@{'/articles?page=' + ${pageNum}}" th:text="${pageNum + 1}"
-                   th:classappend="${pageNum == articles.number} ? 'active' : '' "></a>
-            </li>
-            <li th:classappend="${articles.number == articles.totalPages - 1} ? 'disabled'">
-                <a th:href="@{/articles(page=${articles.number + 1})}"
-                   th:disabled="${articles.number == articles.totalPages - 1}">next</a>
-            </li>
-        </ul>
-    </nav>
 </div>
-
 <footer th:replace="footer/footer :: footer"></footer>
 
 </body>

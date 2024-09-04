@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="/css/init.css"/>
+    <link rel="stylesheet" href="/css/header.css"/>
+    <link rel="stylesheet" href="/css/footer.css"/>
+    <link rel="stylesheet" href="/css/postDetail.css"/>
+
+</head>
+
+<body>
+
+
+<div id="wrapper">
+    <div class="center">
+
+        <header th:replace="header/header :: header"></header>
+
+        <div class="main-text-container">
+            <div class="post-header row-box">
+                <div class="title-section row-box">
+                    <span class="title-text" th:text="${article.title}">글 제목</span>
+
+                    <div class="edit-delete row-box">
+                        <button>수정</button>
+                        <form th:action="@{'/articles/' + ${article.id} + '/delete'}" method="post">
+                            <button>삭제</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="user-info-box row-box">
+                    <img
+                            crossorigin="anonymous"
+                            class="profile"
+                            src="https://picsum.photos/50/49"
+                            alt=""
+                    />
+                    <div class="user-info row-box">
+                        <div class="user-profile column-box">
+                  <span class="user-name" th:text="${article.nickname}">글 작성자 닉네임</span
+                  ><span th:text="${article.email}">글 작성자 직군 (임시로 이메일 값 넣어둠)</span>
+                        </div>
+                        <span class="date" th:text="${#temporals.format(article.createdAt, 'yyyy-MM-dd HH:mm')}"></span>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+
+            <div class="main-text">
+                <article>
+                    <p th:text="${article.content}">글 내용</p>
+                </article>
+            </div>
+
+            <hr/>
+
+            <div class="comment-box" th:each="comment: ${articleComments}">
+                <div class="comment-header row-box">
+                    <div class="user-info-box row-box">
+                        <img
+                                crossorigin="anonymous"
+                                class="profile"
+                                src="https://picsum.photos/50/49"
+                                alt=""
+                        />
+                        <div class="user-info row-box">
+                            <div class="user-profile column-box">
+                    <span class="user-name" th:text="${comment.nickname}">댓글 작성자 닉네임</span
+                    ><span th:text="${comment.email}">댓글 작성자 직군(임시로 이메일 넣어둠)</span>
+                            </div>
+
+                            <span class="date" th:text="${#temporals.format(article.createdAt, 'yyyy-MM-dd HH:mm')}">작성 날짜</span>
+                        </div>
+                    </div>
+
+                    <div class="edit-delete">
+                        <button>수정</button>
+                        <button>삭제</button>
+                    </div>
+                </div>
+
+                <div class="comment-text">
+              <span th:text="${comment.content}">
+                  댓글 내용
+              </span>
+                </div>
+            </div>
+            <hr/>
+
+            <div class="addComment row-box">
+                <input class="comment-text-input" type="text"/>
+                <button class="submit-btn">submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer th:replace="footer/footer :: footer"></footer>
+
+</body>
+</html>
