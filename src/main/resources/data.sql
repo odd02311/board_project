@@ -1,10 +1,10 @@
 -- 테스트 계정
 -- TODO: 테스트용이지만 비밀번호가 노출된 데이터 세팅. 개선하는 것이 좋을 지 고민해 보자.
 insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by) values
-    ('author1', 'asdf1234', 'Author1', 'Testauthor@mail.com', 'I am Author1.', now(), 'author1', now(), 'author1')
+    ('author1', '{noop}asdf1234', 'Author1', 'Testauthor@mail.com', 'I am Author1.', now(), 'author1', now(), 'author1')
 ;
 insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by) values
-    ('author2', 'qwer1234', 'Author2', 'Author2@mail.com', 'I am not Author1', now(), 'author2', now(), 'author2');
+    ('author2', '{noop}qwer1234', 'Author2', 'Author2@mail.com', 'I am not Author1', now(), 'author2', now(), 'author2');
 
 
 insert into article (user_id, title, content, hashtag, created_by, modified_by, created_at, modified_at) values ('author2', 'Fusce posuere felis sed lacus.', 'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', null, 'Abigale', 'Junie', '2021-12-18 01:51:27', '2021-08-27 12:14:55');
