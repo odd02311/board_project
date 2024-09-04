@@ -51,17 +51,19 @@ public class SecurityConfig {
 //  }
       return  http
               .authorizeHttpRequests(auth -> auth
-                      // 정적 리소스 접근 허용
                       .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                      // 특정 GET 요청 허용
-                      .requestMatchers(HttpMethod.GET, "/", "/articles", "/articles/search-hashtag").permitAll()
-                      // 그 외 모든 요청은 인증 필요
+                      .requestMatchers("/api/**").permitAll()
+                      .requestMatchers(
+                              HttpMethod.GET,
+                              "/",
+                              "/articles",
+                              "/articles/search-hashtag"
+                      ).permitAll()
                       .anyRequest().authenticated()
               )
               .formLogin(withDefaults())
-              .logout(logout -> logout
-                      .logoutSuccessUrl("/")
-              )
+              .logout(logout -> logout.logoutSuccessUrl("/"))
+              .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
               .build();
 
   }
