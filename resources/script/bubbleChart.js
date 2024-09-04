@@ -11,6 +11,10 @@ const chart = Highcharts.chart("container", {
     text: "search with hashtag",
     align: "center",
   },
+
+  tooltip: {
+    enabled: false,
+  },
   //   tooltip: {
   //     useHTML: true,
   //     pointFormat: "<b>{point.name}:</b> {point.value}m CO<sub>2</sub>",
@@ -20,8 +24,8 @@ const chart = Highcharts.chart("container", {
     //   animation: false,
     // },
     packedbubble: {
-      minSize: "40%",
-      maxSize: "100%",
+      minSize: "100%",
+      maxSize: "150%",
       zMin: 0,
       zMax: 1000,
       layoutAlgorithm: {
@@ -55,20 +59,20 @@ const chart = Highcharts.chart("container", {
       data: [
         {
           name: "Html",
-          value: 673.6,
+          value: 10,
         },
         {
           name: "Css",
-          value: 5000.2,
+          value: 9,
         },
         {
           name: "Js",
-          value: 90.4,
-          events: {
-            click: function () {
-              console.log("clicked b");
-            },
-          },
+          value: 8,
+          //   events: { // 클릭이벤트 허용 가능함
+          //     click: function () {
+          //       console.log("clicked b");
+          //     },
+          //   },
         },
       ],
       color: "rgba(255,255,255,0)",
@@ -84,15 +88,15 @@ const chart = Highcharts.chart("container", {
       data: [
         {
           name: "Java",
-          value: 12.1,
+          value: 10,
         },
         {
           name: "Spring",
-          value: 11,
+          value: 9,
         },
         {
           name: "Flask",
-          value: 10.2,
+          value: 8,
         },
       ],
       color: "rgba(255,255,255,0)",
@@ -103,15 +107,15 @@ const chart = Highcharts.chart("container", {
       data: [
         {
           name: ".Net",
-          value: 393.2,
+          value: 7,
         },
         {
           name: "MaUI",
-          value: 32.4,
+          value: 6,
         },
         {
           name: "WPF",
-          value: 4.7,
+          value: 5,
         },
       ],
       color: "rgba(255,255,255,0)",

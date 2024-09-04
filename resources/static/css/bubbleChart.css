@@ -45,13 +45,30 @@
 }
 
 .highcharts-data-label:first-child {
-  font-size: 2rem;
+  font-size: 3rem;
+  color: #555;
 }
 
 .highcharts-data-label:nth-child(2) {
   font-size: 1.5rem;
+  color: #555;
 }
 
 .highcharts-data-label:nth-child(3) {
-  font-size: 1rem;
+  font-size: 2rem;
+  color: #555;
+}
+
+.highcharts-point-select {
+  stroke-opacity: 0;
+  font-weight: bold;
+}
+
+.highcharts-point {
+  stroke-opacity: 0;
+  font-weight: bold;
+}
+
+text {
+  opacity: 100;
 }
