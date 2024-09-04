@@ -13,6 +13,15 @@
       referrerpolicy="no-referrer"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
     <link rel="stylesheet" href="../static/css/init.css" />
     <link rel="stylesheet" href="../static/css/postDetail.css" />
     <link rel="stylesheet" href="../static/css/header.css" />
@@ -93,6 +102,23 @@
                 Mozilla. Firefox has been the second most popular web browser
                 since January, 2018.
               </p>
+
+              <pre
+                id="pre-section"
+              ><code id="pre-code-section" class="language-(python)">
+            <p>&#0009;default tab size of 8 characters wide</p>
+            &#0009;&#0009;print('test')
+            &#0009;&#0009;test
+            </code></pre>
+
+              <pre
+                id="pre-section"
+              ><code id="pre-code-section" class="language-(python)">
+              <p>&#0009;default tab size of 8 characters wide</p>
+              &#0009;&#0009;print('test')
+              &#0009;&#0009;long test value long test valuelong test valuelong test valuelong test valuelong test valuelong test valuelong test value
+              </code></pre>
+
               <p>
                 Microsoft Edge is a web browser developed by Microsoft, released
                 in 2015. Microsoft Edge replaced Internet Explorer.
@@ -185,5 +211,9 @@
         <span>CompanyName @ 202X. All rights reserved.</span>
       </div>
     </footer>
+
+    <script>
+      hljs.highlightAll();
+    </script>
   </body>
 </html>

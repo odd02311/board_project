@@ -120,3 +120,57 @@ img {
 .edit-delete > *:hover {
   font-weight: bold;
 }
+
+#pre-section {
+  tab-size: 4;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  overflow-x: auto;
+  height: auto;
+}
+
+#pre-code-section {
+  white-space: pre;
+  background: #f0f0f0;
+  padding: 0;
+  border-radius: 10px/10px;
+  text-overflow: unset;
+}
+
+code::-webkit-scrollbar {
+  width: 8px;
+  /* width는 세로 스크롤바에만 적용된다. */
+  /* height: 8px; */
+  /* 마찬가지로 height는 가로 스크롤바에만 적용된다 */
+}
+
+code::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 25px/25px;
+}
+
+code::-webkit-scrollbar-thumb {
+  background-color: hsl(0, 0%, 45%);
+  border-radius: 20px;
+  background-clip: padding-box;
+  border: 5px solid transparent;
+}
+
+code::-webkit-scrollbar-thumb:hover {
+  transition-duration: 1s;
+  background: hsl(0, 0%, 70%);
+  background-clip: padding-box;
+  /* border: 1px solid transparent; */
+
+  border: 6px solid transparent;
+  /* border-radius: 9px; */
+}
+
+/* pre:hover,
+pre:focus {
+  width: min-content;
+} */
+/* #pre-code-section > * {
+  margin: 5px;
+  margin-bottom: 10px;
+} */
