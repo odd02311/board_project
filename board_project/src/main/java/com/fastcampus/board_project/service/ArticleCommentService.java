@@ -43,16 +43,13 @@ public class ArticleCommentService {
         }
     }
 
-    public void updateArticleComment(ArticleCommentDto dto) {
-        try {
-            ArticleComment articleComment = articleCommentRepository.getReferenceById(dto.id());
-            if (dto.content() != null) { articleComment.setContent(dto.content()); }
-        } catch (EntityNotFoundException e) {
-            log.warn("댓글 업데이트 실패. 댓글을 찾을 수 없습니다 - dto: {}", dto);
-        }
+    public void updateArticleComment(Long id, String newContent) {
+        ArticleComment articleComment = articleCommentRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Comment not found"));
+        articleComment.setContent(newContent);
+        articleCommentRepository.save(articleComment);
     }
 
-    public void deleteArticleComment(Long articleCommentId, String userId) {
-        articleCommentRepository.deleteByIdAndUserAccount_UserId(articleCommentId, userId);
+    public void deleteArticleComment(Long articleCommentId) {
+        articleCommentRepository.deleteById(articleCommentId);
     }
 }

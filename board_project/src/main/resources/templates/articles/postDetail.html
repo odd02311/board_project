@@ -62,7 +62,7 @@
 
                     <div class="edit-delete row-box">
                         <a th:href="@{'/articles/' + ${article.id} + '/form'}">
-                            <button type="submit">수정</button>
+                          수정
                         </a>
 
                         <form th:action="@{'/articles/' + ${article.id} + '/delete'}" method="post">
@@ -121,9 +121,7 @@
 
                     <div class="edit-delete">
 
-                        <form th:action="@{'/comments/' + ${comment.id} + '/edit'}" method="get">
-                            <button type="submit">수정</button>
-                        </form>
+                        <button type="button" onClick="showEditForm(${comment.id})">수정</button>
 
                         <form th:action="@{'/comments/' + ${comment.id} + '/delete'}" method="post">
                             <input type="hidden" th:name="articleId" th:value="${article.id}"/>
@@ -132,10 +130,19 @@
                     </div>
                 </div>
 
+                <!-- 댓글 내용 표시 부분 -->
                 <div class="comment-text">
-                  <span th:text="${comment.content}">
-                      댓글 내용 부분
+                    <!-- 댓글 내용을 보여주는 부분 -->
+                  <span id="commentContent-${comment.id}" th:text="${comment.content}">
+
                   </span>
+
+                    <!-- 댓글 수정 form (초기에는 숨김 처리) -->
+                    <form id="editCommentForm-${comment.id}" th:action="@{'/comments/ + ${comment.id} + '/update'}" method="post">
+                        <input type="hidden" name="articleId" th:value="${article.id}">
+                        <textarea name="content" id="editCommentContent-${comment.id}"></textarea>
+                        <button type="submit">저장</button>
+                    </form>
                 </div>
             </div>
 

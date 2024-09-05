@@ -65,12 +65,17 @@ public class SecurityConfig {
                                         "/articles/form",
                                         "/articles/{articleId}/form"
                                 ).permitAll()
+                                .requestMatchers(HttpMethod.POST, "/articles/form", "/articles/{articleId}/delete", "/articles/{articleId}/form", "/comments/new",
+                                        "/comments/{commentId}/delete",
+                                        "/comments/{commentId}/update"
+
+                                        ).permitAll()
 //                      .requestMatchers(HttpMethod.POST, "/articles/form",
 //                              "/articles/{articleId}/form", "/articles/{articleId}/delete").permitAll()
 
                                 .anyRequest().authenticated()
                 )
-                .formLogin(withDefaults())
+                .formLogin(AbstractHttpConfigurer::disable)
                 .logout(logout -> logout.logoutSuccessUrl("/"))
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
                 .build();

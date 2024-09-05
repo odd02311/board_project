@@ -48,7 +48,7 @@ public class ArticleService {
     public ArticleWithCommentsDto getArticleWithComments(Long articleId) {
         return articleRepository.findById(articleId)
                 .map(ArticleWithCommentsDto::from)
-                .orElseThrow(() -> new EntityNotFoundException("게시글이 없습니다 - articleId: " + articleId));
+                .orElseThrow(() -> new EntityNotFoundException("Article with id " + articleId + " not found"));
     }
 
     @Transactional(readOnly = true)
@@ -67,26 +67,18 @@ public class ArticleService {
     public void updateArticle(Long articleId, ArticleDto dto) {
         try {
             Article article = articleRepository.getReferenceById(articleId);
-            UserAccount userAccount = userAccountRepository.getReferenceById(dto.userAccountDto().userId());
-
-            if(article.getUserAccount().equals(userAccount)) { // 게시글 사용자와 인증된 사용자가 같은지 검증
-                if (dto.title() != null) {
-                    article.setTitle(dto.title());
-                } // if는 null이 왔을때를 위한 방어코드
-                if (dto.content() != null) {
-                    article.setContent(dto.content());
-                }
-                article.setHashtag(dto.hashtag());
-            }
+            if (dto.title() != null) {article.setTitle(dto.title());} // if는 null이 왔을때를 위한 방어코드
+            if (dto.content() != null) {article.setContent(dto.content());}
+            article.setHashtag(dto.hashtag());
         } catch(EntityNotFoundException e) {
-            log.warn("게시글 수정 실패. 게시글을 수정하는데 필요한 정보를 찾을 수 없음. - {}", e.getLocalizedMessage());
+            log.warn("게시글 수정 실패. 게시글을 찾지 못함 - dto: {}", dto);
         }
 
     }
 
 
-    public void deleteArticle(long articleId, String userId) {
-        articleRepository.deleteByIdAndUserAccount_UserId(articleId, userId);
+    public void deleteArticle(long articleId) {
+        articleRepository.deleteById(articleId);
     }
 
     public long getArticleCount() {

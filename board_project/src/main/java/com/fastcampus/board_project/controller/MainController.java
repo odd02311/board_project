@@ -9,7 +9,6 @@ public class MainController {
     @GetMapping("/")
     public String root() {
         return "articles/index";
-
     }
 
 }

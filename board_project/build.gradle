@@ -9,11 +9,7 @@ version = '0.0.1-SNAPSHOT'
 
 java {
     toolchain {
-<<<<<<< HEAD
-        languageVersion = JavaLanguageVersion.of(21)
-=======
         languageVersion = JavaLanguageVersion.of(17)
->>>>>>> b4be9416561fc9bdd8d7584e5aeb8ea09aa5730a
     }
 }
 
@@ -43,6 +39,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     
     // queryDSL 설정

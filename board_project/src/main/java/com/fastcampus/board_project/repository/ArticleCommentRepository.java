@@ -21,8 +21,6 @@ public interface ArticleCommentRepository extends
 {
   List<ArticleComment> findByArticle_Id(Long articleId); // Article_Id * _ under bar를 객체이름에 쓰면 그 객체안으로 들어간다.
 
-  void deleteByIdAndUserAccount_UserId(Long articleCommentId, String userId);
-
   @Override
   default void customize(QuerydslBindings bindings, QArticleComment root){
     bindings.excludeUnlistedProperties(true);
