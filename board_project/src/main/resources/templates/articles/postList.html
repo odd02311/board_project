@@ -101,7 +101,8 @@
                         <td class="data title">
                             <a th:href="@{'/articles/' +  ${article.id}}" th:text="${article.title}"></a>
                         </td>
-                        <td class="data date" th:text="${article.createdAt}"></td>
+                        <td class="data date"
+                            th:text="${#temporals.format(article.createdAt, 'yyyy.MM.dd HH')}"></td>
                     </tr>
                     </tbody>
                 </table>
