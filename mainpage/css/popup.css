@@ -53,12 +53,13 @@
 .popup-word {
     text-align: left; /* 텍스트 왼쪽 정렬 */
     padding-top: 10px; /* 상단 패딩 설정 */
+    margin-top: 10px;
 }
 
 .popup-container h2 {
     text-align: center; /* 제목 중앙 정렬 */
     font-size: 1.5rem; /* 제목 폰트 크기 */
-    margin-bottom: 30px; /* 하단 여백 설정 */
+    margin-bottom: 15px; /* 하단 여백 설정 */
 }
 
 .popup-container p {
@@ -89,6 +90,7 @@
     padding: 10px 20px; /* 내부 여백 10px 상하, 20px 좌우 */
     border-radius: 4px; /* 모서리를 둥글게 설정 (4px) */
     cursor: pointer; /* 마우스 커서를 포인터로 변경 (클릭 가능 표시) */
+    margin-top: 10px;
 }
 
 /* 팝업 닫기 버튼 스타일 */
