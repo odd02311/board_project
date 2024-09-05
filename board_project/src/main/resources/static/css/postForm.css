@@ -5,7 +5,7 @@
   border: 0px;
   margin: 0px;
   height: 40px;
-  padding-left: 1px;
+  padding-left: 1rem;
   font-size: 1.5rem;
 }
 
@@ -13,6 +13,28 @@
   /* border: 0px; */
   outline: 0px;
 }
+
+/* select 부분 css */
+.category-select {
+    font-size: 1rem;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 150px; /* 너비 조정 */
+    max-width: 100%; /* 화면 크기에 따라 조절되도록 설정 */
+}
+
+.category-select:focus {
+    border-color: #007bff;
+}
+
+
+
 
 .post-edit {
   width: 70%;

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
 html, body {
     margin: 0; /* HTML 및 body 요소의 기본 외부 여백(margin)을 0으로 설정 */
@@ -96,4 +97,17 @@ html, body {
 .card-text {
     font-size: 1rem; /* 카드 내용의 폰트 크기를 1rem로 설정 */
     color: #000; /* 텍스트 색상을 검정색(#000)으로 설정 */
+}
+
+/* main-container의 h1과 card-container에 Merriweather 적용 */
+.main-container h1 {
+    font-family: 'Merriweather', serif;
+}
+
+.card-title {
+    font-family: 'Merriweather', serif;
+}
+
+.popup-mainword {
+    font-family: 'Merriweather', serif;
 }

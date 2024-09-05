@@ -35,8 +35,13 @@ public class ArticleCommentController {
     }
 
     @PostMapping("/{commentId}/update")
-    public String updateComment(@PathVariable Long id, @RequestParam Long articleId, @RequestParam String content) {
-        articleCommentService.updateArticleComment(id, content);
+    public String updateComment(@PathVariable Long commentId, @RequestParam Long articleId, @RequestParam String content) {
+
+        System.out.println("Debug: commentId = " + commentId);
+        System.out.println("Debug: articleId = " + articleId);
+        System.out.println("Debug: content = " + content);
+
+        articleCommentService.updateArticleComment(commentId, content);
         return "redirect:/articles/" + articleId;
     }
 }

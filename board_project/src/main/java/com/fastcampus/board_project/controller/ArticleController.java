@@ -98,16 +98,26 @@ public class ArticleController {
     map.addAttribute("article", article);
     map.addAttribute("formStatus", FormStatus.UPDATE);
 
-    return "articles/postForm";
+    return "articles/postEdit";
   }
 
-  @PostMapping ("/{articleId}/form")
-  public String updateArticle(@PathVariable Long articleId, ArticleRequest articleRequest) {
-    // TODO: 인증 정보를 넣어줘야 한다.
-    articleService.updateArticle(articleId, articleRequest.toDto(UserAccountDto.of(
-        "author1", "asdf1234", "author1@mail.com", "AUTHOR1", "memo"
-        )));
+//  @PostMapping ("/{articleId}/form")
+//  public String updateArticle(@PathVariable Long articleId, ArticleRequest articleRequest) {
+//    // TODO: 인증 정보를 넣어줘야 한다.
+//    articleService.updateArticle(articleId, articleRequest.toDto(UserAccountDto.of(
+//        "author1", "asdf1234", "author1@mail.com", "AUTHOR1", "memo"
+//        )));
+//
+//    return "redirect:/articles/" + articleId;
+//  }
 
+  @PostMapping("/{articleId}/form")
+  public String updateArticle(
+          @PathVariable Long articleId,
+          ArticleRequest articleRequest
+  ) {
+    // 현재 인증 정보를 사용하는 부분은 생략하고 사용자 정보를 UserAccountDto로 전달
+    articleService.updateArticle(articleId, articleRequest);
     return "redirect:/articles/" + articleId;
   }
 

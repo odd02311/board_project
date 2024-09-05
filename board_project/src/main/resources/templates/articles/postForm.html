@@ -35,6 +35,14 @@
         <header th:replace="header/header :: header"></header>
         <form class="post-edit" th:action="@{'/articles/form'}" method="post">
             <div class="post-header row-box">
+
+                <select name="category" class="category-select">
+                    <option value="frontend">Frontend</option>
+                    <option value="backend">Backend</option>
+                    <option value="csharp">C#</option>
+                </select>
+
+
                 <input
                         class="title-edit"
                         type="text"

@@ -33,13 +33,22 @@
     <div class="center">
 
         <header th:replace="header/header :: header"></header>
-        <form class="post-edit" th:action="@{'/articles/form'}" method="post">
+        <form class="post-edit" th:action="@{'/articles/' + ${article.id} + '/form'}" method="post">
             <div class="post-header row-box">
+
+                <!-- Hashtag 선택 섹션 -->
+                <select name="hashtag" class="category-select" th:value="${article.hashtag}">
+                    <option value="frontend" th:selected="${article.hashtag == 'frontend'}">Frontend</option>
+                    <option value="backend" th:selected="${article.hashtag == 'backend'}">Backend</option>
+                    <option value="csharp" th:selected="${article.hashtag == 'csharp'}">C#</option>
+                </select>
+
                 <input
                         class="title-edit"
                         type="text"
                         name="title"
                         placeholder="제목을 입력하세요."
+                        th:value="${article.title}"
                 />
                 <div class="edit-delete row-box">
                     <button onclick="getEditorText()">저장</button>
@@ -51,7 +60,7 @@
                     <div id="summernote"><p></p></div>
                   </form> -->
 
-                <div id="content"></div>
+                <div id="content" th:text="${article.content}"></div>
                 <input type="hidden" id="contentInput" name="content" />
 
             </div>

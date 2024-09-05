@@ -62,7 +62,7 @@
 
                     <div class="edit-delete row-box">
                         <a th:href="@{'/articles/' + ${article.id} + '/form'}">
-                          수정
+                            수정
                         </a>
 
                         <form th:action="@{'/articles/' + ${article.id} + '/delete'}" method="post">
@@ -121,7 +121,8 @@
 
                     <div class="edit-delete">
 
-                        <button type="button" onClick="showEditForm(${comment.id})">수정</button>
+                        <!-- 수정 버튼을 누르면 textarea를 보여줍니다 -->
+                        <button type="button" th:onclick="showEditForm([[${comment.id}]])">수정</button>
 
                         <form th:action="@{'/comments/' + ${comment.id} + '/delete'}" method="post">
                             <input type="hidden" th:name="articleId" th:value="${article.id}"/>
@@ -133,17 +134,19 @@
                 <!-- 댓글 내용 표시 부분 -->
                 <div class="comment-text">
                     <!-- 댓글 내용을 보여주는 부분 -->
-                  <span id="commentContent-${comment.id}" th:text="${comment.content}">
+                    <span th:id="'commentContent-' + ${comment.id}" th:text="${comment.content}"></span>
 
-                  </span>
 
-                    <!-- 댓글 수정 form (초기에는 숨김 처리) -->
-                    <form id="editCommentForm-${comment.id}" th:action="@{'/comments/ + ${comment.id} + '/update'}" method="post">
+                    <!-- 댓글 수정 form -->
+                    <form th:action="@{'/comments/' + ${comment.id} + '/update'}" method="post" style="display: none;" th:id="'editCommentForm-' + ${comment.id}">
                         <input type="hidden" name="articleId" th:value="${article.id}">
-                        <textarea name="content" id="editCommentContent-${comment.id}"></textarea>
+
+                        <!-- 댓글 수정 textarea (초기에는 숨김 처리) -->
+                        <textarea name="content" th:id="'editCommentContent-' + ${comment.id}" style="display: none;" rows="3" cols="40"></textarea>
                         <button type="submit">저장</button>
                     </form>
                 </div>
+
             </div>
 
             <hr/>
@@ -162,6 +165,23 @@
 <footer th:replace="footer/footer :: footer"></footer>
 
 <script src="/js/popup.js"></script> <!-- 로그인 팝업을 위한 JS 추가 -->
+<script>
+    function showEditForm(commentId) {
+        console.log(commentId);
+        // 댓글 내용을 숨기지 않고 textarea를 보여줍니다.
+        const commentContent = document.getElementById('commentContent-' + commentId);
+        const editTextarea = document.getElementById('editCommentContent-' + commentId);
+        const editCommentForm = document.getElementById('editCommentForm-' + commentId);
 
+        // 기존 댓글 내용 텍스트를 textarea에 채웁니다.
+        editTextarea.value = commentContent.innerText.trim();
+
+
+        // textarea와 저장 버튼만 보이기
+        commentContent.style.display = "none";
+        editTextarea.style.display = "block";
+        editCommentForm.style.display = "block";
+    }
+</script>
 </body>
 </html>

@@ -5,6 +5,7 @@ import com.fastcampus.board_project.domain.UserAccount;
 import com.fastcampus.board_project.domain.constant.SearchType;
 import com.fastcampus.board_project.dto.ArticleDto;
 import com.fastcampus.board_project.dto.ArticleWithCommentsDto;
+import com.fastcampus.board_project.dto.request.ArticleRequest;
 import com.fastcampus.board_project.repository.ArticleRepository;
 import com.fastcampus.board_project.repository.UserAccountRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -63,18 +64,26 @@ public class ArticleService {
         UserAccount userAccount = userAccountRepository.getReferenceById(dto.userAccountDto().userId());
         articleRepository.save(dto.toEntity(userAccount));
     }
-
-    public void updateArticle(Long articleId, ArticleDto dto) {
-        try {
-            Article article = articleRepository.getReferenceById(articleId);
-            if (dto.title() != null) {article.setTitle(dto.title());} // if는 null이 왔을때를 위한 방어코드
-            if (dto.content() != null) {article.setContent(dto.content());}
-            article.setHashtag(dto.hashtag());
-        } catch(EntityNotFoundException e) {
-            log.warn("게시글 수정 실패. 게시글을 찾지 못함 - dto: {}", dto);
-        }
-
+//
+//    public void updateArticle(Long articleId, ArticleDto dto) {
+//        try {
+//            Article article = articleRepository.getReferenceById(articleId);
+//            if (dto.title() != null) {article.setTitle(dto.title());} // if는 null이 왔을때를 위한 방어코드
+//            if (dto.content() != null) {article.setContent(dto.content());}
+//            article.setHashtag(dto.hashtag());
+//        } catch(EntityNotFoundException e) {
+//            log.warn("게시글 수정 실패. 게시글을 찾지 못함 - dto: {}", dto);
+//        }
+//
+//    }
+//
+    public void updateArticle(Long articleId, ArticleRequest articleRequest) {
+        Article article = articleRepository.findById(articleId).orElseThrow(() -> new IllegalArgumentException("해당 ID의 게시글이 존재하지 않습니다: " + articleId));
+        article.setTitle(articleRequest.title());
+        article.setContent(articleRequest.content());
+        article.setHashtag(articleRequest.hashtag());
     }
+
 
 
     public void deleteArticle(long articleId) {

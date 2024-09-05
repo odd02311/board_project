@@ -10,4 +10,5 @@ public class SIgnUpController {
     public String showSignUpForm() {
         return "articles/signup";
     }
+
 }

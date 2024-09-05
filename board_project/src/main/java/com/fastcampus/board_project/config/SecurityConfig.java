@@ -51,33 +51,13 @@ public class SecurityConfig {
 //  }
         return http
                 .authorizeHttpRequests(auth -> auth
-                                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                .requestMatchers("/api/**").permitAll()
-                                .requestMatchers(
-                                        HttpMethod.GET,
-                                        "/",
-                                        "/articles",
-                                        "/articles/search-hashtag",
-                                        "/articles/{articleId}",
-                                        "/articles/form",
-                                        "/signup",
-                                        "/hashtags",
-                                        "/articles/form",
-                                        "/articles/{articleId}/form"
-                                ).permitAll()
-                                .requestMatchers(HttpMethod.POST, "/articles/form", "/articles/{articleId}/delete", "/articles/{articleId}/form", "/comments/new",
-                                        "/comments/{commentId}/delete",
-                                        "/comments/{commentId}/update"
-
-                                        ).permitAll()
+                                .anyRequest().permitAll()
 //                      .requestMatchers(HttpMethod.POST, "/articles/form",
 //                              "/articles/{articleId}/form", "/articles/{articleId}/delete").permitAll()
-
-                                .anyRequest().authenticated()
                 )
                 .formLogin(AbstractHttpConfigurer::disable)
                 .logout(logout -> logout.logoutSuccessUrl("/"))
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
+                .csrf(AbstractHttpConfigurer::disable)
                 .build();
     }
 
@@ -86,17 +66,17 @@ public class SecurityConfig {
 
         return (web) -> web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
-
-    @Bean
-    public UserDetailsService userDetailsService(UserAccountRepository userAccountRepository) {
-        return username -> userAccountRepository
-                .findById(username)
-                .map(UserAccountDto::from)
-                .map(BoardPrincipal::from)
-                .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다 - username: " + username));
-
-
-    }
+//
+//    @Bean
+//    public UserDetailsService userDetailsService(UserAccountRepository userAccountRepository) {
+//        return username -> userAccountRepository
+//                .findById(username)
+//                .map(UserAccountDto::from)
+//                .map(BoardPrincipal::from)
+//                .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다 - username: " + username));
+//
+//
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
