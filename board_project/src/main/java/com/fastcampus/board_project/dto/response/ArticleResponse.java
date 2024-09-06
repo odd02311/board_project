@@ -1,6 +1,7 @@
 package com.fastcampus.board_project.dto.response;
 
 import com.fastcampus.board_project.dto.ArticleDto;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 

@@ -40,7 +40,7 @@ const chart = Highcharts.chart("container", {
             const category = tagToCategory[hashtag];
             if (category) {
               // 카테고리 값으로 서버로 이동
-              window.location.href = '/articles/search-hashtag?searchValue=' + category;
+              window.location.href = '/articles?searchType=HASHTAG&searchValue=' + category;
             } else {
               console.log('해시태그에 해당하는 카테고리를 찾을 수 없습니다.');
             }

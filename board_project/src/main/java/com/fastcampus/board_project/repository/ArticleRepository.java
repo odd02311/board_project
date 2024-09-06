@@ -26,6 +26,9 @@ public interface ArticleRepository extends
   Page<Article> findByUserAccount_UserIdContaining(String UserId, Pageable pageable);
   Page<Article> findByUserAccount_NicknameContaining(String nickname, Pageable pageable);
   Page<Article> findByHashtag(String hashtag, Pageable pageable);
+  Page<Article> findByHashtagAndTitleContaining(String hashtag, String title, Pageable pageable);
+  Page<Article> findByHashtagAndUserAccount_NicknameContaining(String hashtag, String nickname, Pageable pageable);
+
 
   @Override
   default void customize(QuerydslBindings bindings, QArticle root){

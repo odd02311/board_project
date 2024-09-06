@@ -8,6 +8,7 @@
 }
 
 .title-text {
+width: 60%;
   padding-left: 20px;
   font-size: 3rem;
   /* font-weight: bold; */
@@ -15,7 +16,7 @@
 }
 
 .main-text-container {
-  width: 70%;
+  width: 75%;
 }
 
 .main-text {
@@ -26,7 +27,6 @@
 }
 
 .user-profile {
-  width: 150px;
   justify-content: space-between;
 }
 
@@ -59,7 +59,7 @@ img {
   align-items: center;
 }
 .title-section {
-  width: 70%;
+  /* width: 70%; */
   justify-content: space-between;
 }
 
@@ -67,10 +67,10 @@ img {
   text-overflow: ellipsis;
   /* margin: 1px; */
 }
-
+/*
 .date {
   transform: translateY(50%);
-}
+} */
 
 .profile {
   border-radius: 100%;
@@ -78,8 +78,20 @@ img {
   width: 20%;
 }
 
+.comment-box {
+    padding: 20px;
+}
+
+.comment-box .edit-delete {
+    display: flex;
+}
+
 .comment-text {
-  padding: 20px;
+  margin-top: 20px;
+}
+
+.comment-text button {
+    margin-left: 10px;
 }
 
 .comment-text-input:focus {

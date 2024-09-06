@@ -60,15 +60,17 @@
                 <div class="title-section row-box">
                     <span class="title-text" th:text="${article.title}">글 제목</span>
 
-                    <div class="edit-delete row-box">
-                        <a th:href="@{'/articles/' + ${article.id} + '/form'}">
-                            수정
-                        </a>
+                </div>
 
-                        <form th:action="@{'/articles/' + ${article.id} + '/delete'}" method="post">
-                            <button>삭제</button>
-                        </form>
-                    </div>
+
+                <div class="edit-delete row-box">
+                    <a th:href="@{'/articles/' + ${article.id} + '/form'}">
+                        수정
+                    </a>
+
+                    <form th:action="@{'/articles/' + ${article.id} + '/delete'}" method="post">
+                        <button>삭제</button>
+                    </form>
                 </div>
 
                 <div class="user-info-box row-box">
@@ -81,7 +83,7 @@
                     <div class="user-info row-box">
                         <div class="user-profile column-box">
                   <span class="user-name" th:text="${article.nickname}">글 작성자 닉네임</span
-                  ><span th:text="${article.email}">글 작성자 직군 (임시로 이메일 값 넣어둠)</span>
+                  ><span th:text="${article.hashtag}">글 작성자 직군 (임시로 이메일 값 넣어둠)</span>
                         </div>
                         <span class="date"
                               th:text="${#temporals.format(article.createdAt, 'yyyy.MM.dd')}"></span>
@@ -109,8 +111,8 @@
                         />
                         <div class="user-info row-box">
                             <div class="user-profile column-box">
-                    <span class="user-name" th:text="${comment.nickname}">댓글 작성자 닉네임</span
-                    ><span th:text="${comment.email}">댓글 작성자 직군(임시로 이메일 넣어둠)</span>
+                    <span class="user-name" th:text="${comment.nickname}">댓글 작성자 닉네임</span>
+<!--                    ><span th:text="${comment.email}">댓글 작성자 직군(임시로 이메일 넣어둠)</span>-->
                             </div>
 
                             <span class="date"
@@ -142,7 +144,7 @@
                         <input type="hidden" name="articleId" th:value="${article.id}">
 
                         <!-- 댓글 수정 textarea (초기에는 숨김 처리) -->
-                        <textarea name="content" th:id="'editCommentContent-' + ${comment.id}" style="display: none;" rows="3" cols="40"></textarea>
+                        <textarea class="comment-text-input" name="content" th:id="'editCommentContent-' + ${comment.id}" style="display: none;" rows="10" cols="30"></textarea>
                         <button type="submit">저장</button>
                     </form>
                 </div>

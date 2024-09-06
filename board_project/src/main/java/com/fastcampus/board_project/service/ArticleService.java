@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -105,6 +106,25 @@ public class ArticleService {
 
     public List<String> getHashtags() {
         return articleRepository.findAllDistinctHashtags();
+    }
+
+    @Transactional(readOnly = true)
+    public Page<ArticleDto> searchArticlesViaHashtagWithAdditionalFilter(String hashtag, String additionalSearchType, String additionalSearchValue, Pageable pageable) {
+        if (hashtag == null || hashtag.isBlank()) {
+            return Page.empty(pageable);
+        }
+
+        if ("title".equals(additionalSearchType) && additionalSearchValue != null && !additionalSearchValue.isBlank()) {
+            return articleRepository.findByHashtagAndTitleContaining(hashtag, additionalSearchValue, pageable)
+                    .map(ArticleDto::from);
+        } else if ("nickname".equals(additionalSearchType) && additionalSearchValue != null && !additionalSearchValue.isBlank()) {
+            return articleRepository.findByHashtagAndUserAccount_NicknameContaining(hashtag, additionalSearchValue, pageable)
+                    .map(ArticleDto::from);
+        } else {
+            // 추가 검색 조건이 없으면 해시태그만으로 검색
+            return articleRepository.findByHashtag(hashtag, pageable)
+                    .map(ArticleDto::from);
+        }
     }
 }
 /**

@@ -44,12 +44,6 @@ header > * > * {
   margin-right: 1%;
 }
 
-ul {
-  display: flex;
-  justify-content: center;
-  width: 400px;
-}
-
 li {
   float: left;
   display: flex;
@@ -89,6 +83,13 @@ li > a {
 }
 .service-name {
   font-size: 1.5rem;
+}
+
+.pagination ul {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  margin-bottom: 3rem;
 }
 
 .logo:hover {

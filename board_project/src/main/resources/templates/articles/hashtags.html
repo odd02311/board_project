@@ -68,31 +68,32 @@
         </div>
     </div>
 
-    <div class="post-list">
-        <!-- articles가 null이 아닌 경우 처리 -->
-        <div th:if="${articles != null}">
-            <!-- 게시물이 있을 때 -->
-            <div th:if="${#lists.size(articles) > 0}">
-                <div th:each="article : ${articles}">
-                    <h2 th:text="${article.title}"></h2>
-                    <p th:text="${article.content}"></p>
-                    <span th:text="${article.createdAt}"></span>
-                    <span th:text="${article.hashtag}"></span>
-                </div>
-            </div>
-            <!-- 게시물이 없을 때 -->
+<!--    <div class="post-list">-->
+<!--        &lt;!&ndash; articles가 null이 아닌 경우 처리 &ndash;&gt;-->
+<!--        <div th:if="${articles != null}">-->
+<!--            &lt;!&ndash; 게시물이 있을 때 &ndash;&gt;-->
+<!--            <div th:if="${#lists.size(articles) > 0}">-->
+<!--                <div th:each="article : ${articles}">-->
+<!--                    <h2 th:text="${article.title}"></h2>-->
+<!--                    <p th:text="${article.content}"></p>-->
+<!--                    <span th:text="${article.createdAt}"></span>-->
+<!--                    <span th:text="${article.hashtag}"></span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; 게시물이 없을 때 &ndash;&gt;-->
 
-        </div>
+<!--        </div>-->
 
-        <div th:if="${#lists.size(articles) == 0}">
-            <p>해당 해시태그와 관련된 게시물이 없습니다.</p>
-        </div>
+<!--        <div th:if="${#lists.size(articles) == 0}">-->
+<!--            <p>해당 해시태그와 관련된 게시물이 없습니다.</p>-->
+<!--        </div>-->
 
-        <!-- 초기 상태 (articles가 null일 때), 게시물이 없는 경우 표시 안 함 -->
-        <div th:if="${articles == null}">
-            <p>해시태그를 클릭하여 관련된 게시물을 검색해보세요.</p>
-        </div>
-    </div>
+<!--        &lt;!&ndash; 초기 상태 (articles가 null일 때), 게시물이 없는 경우 표시 안 함 &ndash;&gt;-->
+<!--        <div th:if="${articles == null}">-->
+<!--            <p>해시태그를 클릭하여 관련된 게시물을 검색해보세요.</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    -->
 
 </div>
 

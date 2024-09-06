@@ -161,6 +161,20 @@ table {
   border-radius: 15px/15px;
 }
 
+/* disabled 클래스 */
+.pagination .disabled a {
+    pointer-events: none;  /* 클릭을 막습니다 */
+    color: #999;           /* 회색으로 표시 */
+    cursor: not-allowed;   /* 마우스를 비활성화된 상태로 */
+}
+
+/* active 클래스 */
+.pagination .active a {
+    font-weight: bold;     /* 굵게 표시 */
+    color: #000;           /* 검은색으로 표시 */
+    border-bottom: 2px solid #000;  /* 밑줄을 추가 */
+}
+
 
 .board-title {
   font-size: 4rem;
