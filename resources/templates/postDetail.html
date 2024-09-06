@@ -173,7 +173,9 @@
               </div>
 
               <div class="edit-delete">
-                <button>수정</button>
+                <button class="edit-Btn" onclick="onClickEdit(this);">
+                  수정
+                </button>
                 <button>삭제</button>
               </div>
             </div>
@@ -183,12 +185,23 @@
                 Google Chrome is a web browser developed by Google, released in
                 2008. Chrome is the world's most popular web browser today!
               </span>
+              <textarea
+                cols="30"
+                rows="10"
+                class="comment-text-input edit-text"
+                type="text"
+              ></textarea>
             </div>
           </div>
           <hr />
 
           <div class="addComment row-box">
-            <input class="comment-text-input" type="text" />
+            <textarea
+              cols="30"
+              rows="10"
+              class="comment-text-input"
+              type="text"
+            ></textarea>
             <button class="submit-btn">작성</button>
           </div>
         </div>
@@ -214,5 +227,7 @@
     <script>
       hljs.highlightAll();
     </script>
+
+    <script src="../script/postDetail.js"></script>
   </body>
 </html>

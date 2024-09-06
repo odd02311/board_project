@@ -43,7 +43,7 @@
 .addComment {
   justify-content: space-between;
 }
-.addComment > input {
+.addComment > textarea {
   width: 90%;
 }
 
@@ -89,7 +89,6 @@ img {
 .comment-text-input {
   width: 80%;
   border: 1px solid rgb(223, 223, 223);
-
   margin: 10px;
   height: 80px;
   padding-left: 1px;
@@ -130,6 +129,17 @@ img {
 
 .edit-delete > *:hover {
   font-weight: bold;
+}
+.comment-text-input {
+  width: 90%;
+  display: unset;
+
+  resize: none;
+}
+
+.edit-text {
+  display: none;
+  resize: none;
 }
 
 #pre-section {
