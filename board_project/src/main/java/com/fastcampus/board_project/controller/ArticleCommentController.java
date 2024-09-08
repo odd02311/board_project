@@ -1,9 +1,14 @@
 package com.fastcampus.board_project.controller;
 
+import com.fastcampus.board_project.domain.CustomUserDetails;
+import com.fastcampus.board_project.domain.UserAccount;
 import com.fastcampus.board_project.dto.UserAccountDto;
 import com.fastcampus.board_project.dto.request.ArticleCommentRequest;
+import com.fastcampus.board_project.dto.request.ArticleRequest;
 import com.fastcampus.board_project.service.ArticleCommentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,16 +18,19 @@ import org.springframework.web.bind.annotation.*;
 public class ArticleCommentController {
 
     private final ArticleCommentService articleCommentService;
-
+    
 
     @PostMapping("/new")
-    // TODO: 인증 정보를 넣어야 한다.
+    // TODO: 인증 정보를 넣어야 한다. -> 완료
     public String postNewArticleComment(ArticleCommentRequest articleCommentRequest) {
-        articleCommentService.saveArticleComment(articleCommentRequest.toDto(UserAccountDto.of(
-                "author1", "password", "author1@mail.com", "AUTHOR1", null
 
-        )));
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+        UserAccount userAccount = customUserDetails.getUserAccount();
 
+        UserAccountDto userAccountDto = UserAccountDto.from(userAccount);
+
+        articleCommentService.saveArticleComment(articleCommentRequest.toDto(userAccountDto));
 
         return "redirect:/articles/" + articleCommentRequest.articleId();
     }

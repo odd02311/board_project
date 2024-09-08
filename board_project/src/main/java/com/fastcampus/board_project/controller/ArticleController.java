@@ -1,5 +1,7 @@
 package com.fastcampus.board_project.controller;
 
+import com.fastcampus.board_project.domain.CustomUserDetails;
+import com.fastcampus.board_project.domain.UserAccount;
 import com.fastcampus.board_project.domain.constant.FormStatus;
 import com.fastcampus.board_project.domain.constant.SearchType;
 import com.fastcampus.board_project.dto.UserAccountDto;
@@ -14,6 +16,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -78,8 +82,20 @@ public class ArticleController {
     public String article(@PathVariable Long articleId, ModelMap map) {
         ArticleWithCommentsResponse article = ArticleWithCommentsResponse.from(articleService.getArticleWithComments(articleId));
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String loggedInUserId = null;
+
+        //인증되지 않은 유저는 Spring Security에서 "anonymousUser" String을 반환함
+        if (authentication != null && authentication.isAuthenticated() && !(authentication.getPrincipal() instanceof String)) {
+            // 인증된 사용자일 때만 UserId를 가져옴
+            CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+            loggedInUserId = customUserDetails.getUserAccount().getUserId();
+        }
+
         map.addAttribute("article", article); // (완료)TODO: 구현할 때 여기에 실제 데이터 넣어야 함
         map.addAttribute("articleComments", article.articleCommentResponse());
+        map.addAttribute("loggedInUserId", loggedInUserId);
 
         return "articles/postDetail";
     }
@@ -112,12 +128,28 @@ public class ArticleController {
         return "articles/postForm";
     }
 
+//    @PostMapping("/form")
+//    public String postNewArticle(ArticleRequest articleRequest) {
+//        // TODO: 인증 정보를 넣어줘야 한다.
+//        articleService.saveArticle(articleRequest.toDto(UserAccountDto.of(
+//                "author1", "asdf1234", "author1@mail.com", "AUTHOR1", "memo"
+//        )));
+//        return "redirect:/articles";
+//    }
+
     @PostMapping("/form")
+    // TODO:  인증 정보 넣기 완료
     public String postNewArticle(ArticleRequest articleRequest) {
-        // TODO: 인증 정보를 넣어줘야 한다.
-        articleService.saveArticle(articleRequest.toDto(UserAccountDto.of(
-                "author1", "asdf1234", "author1@mail.com", "AUTHOR1", "memo"
-        )));
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+        UserAccount userAccount = customUserDetails.getUserAccount();
+
+        System.out.println("userAccount  >>>" + userAccount);
+
+        UserAccountDto userAccountDto = UserAccountDto.from(userAccount);
+
+        articleService.saveArticle(articleRequest.toDto(userAccountDto));
+
         return "redirect:/articles";
     }
 

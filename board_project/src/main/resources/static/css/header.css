@@ -48,7 +48,7 @@ li {
   float: left;
   display: flex;
   height: 60px;
-  width: 70px;
+  width: 75px;
   margin-left: 5px;
   margin-right: 5px;
   justify-content: center;
@@ -88,7 +88,7 @@ li > a {
 .pagination ul {
   display: flex;
   justify-content: center;
-  width: 400px;
+  width: 17rem;
   margin-bottom: 3rem;
 }
 
@@ -130,8 +130,3 @@ li > a {
   100% {
     width: 150px;
   }
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> b4be9416561fc9bdd8d7584e5aeb8ea09aa5730a

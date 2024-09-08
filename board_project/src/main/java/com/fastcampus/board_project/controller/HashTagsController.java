@@ -8,6 +8,6 @@ public class HashTagsController {
 
     @GetMapping("/hashtags")
     public String showHashTags() {
-        return "articles/hashtags";
+        return "hashtags/hashtags";
     }
 }

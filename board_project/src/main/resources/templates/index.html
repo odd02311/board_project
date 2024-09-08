@@ -34,10 +34,9 @@
         <div id="login-popup" class="popup-overlay">
             <div class="popup-content">
                 <div class="popup-image-container">
-                    <img src="https://img.freepik.com/premium-vector/crea-un-icono-que-ilustre-software-o-una-pc-laptop-vector-illustration-doodle-line-art_969863-91082.jpg?w=826" alt="Left Image">
-                </div>
+                    <img src="https://img.freepik.com/premium-vector/crea-un-icono-que-ilustre-software-o-una-pc-laptop-vector-illustration-doodle-line-art_969863-91082.jpg?w=826" alt="Left Image">                </div>
                 <span class="popup-close">&times;</span>
-                <form id="login-form" th:action="@{/login}" method="post">
+                <form th:action="@{/user/login}" method="post">
                     <div class="popup-container">
                         <div class="popup-mainword">
                             <h2>Ready to connect with your favorite brand?</h2>
@@ -46,11 +45,11 @@
                         </div>
                         <div class="popup-word">
                             <label for="username">Username</label>
-                            <input type="text" id="username" name="username" required>
+                            <input type="text" id="username" name="userId" required>
                             <label for="password">Password</label>
                             <input type="password" id="password" name="password" required>
-                            <button type="submit">Login</button>
-                            <button type="button">Sign In</button>
+                            <button type="submit">Log in</button>
+                            <a th:href="@{/user/signup}">Sign Up</a>
                         </div>
                     </div>
                 </form>

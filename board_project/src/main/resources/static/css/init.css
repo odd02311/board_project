@@ -15,10 +15,6 @@
   font-style: normal;
 }
 
-html {
-  overflow: scroll;
-}
-
 button {
   background: inherit;
   border: none;

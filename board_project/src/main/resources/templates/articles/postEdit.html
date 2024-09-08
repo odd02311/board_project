@@ -60,7 +60,7 @@
                     <div id="summernote"><p></p></div>
                   </form> -->
 
-                <div id="content" th:text="${article.content}"></div>
+                <div id="content" th:utext="${article.content}"></div>
                 <input type="hidden" id="contentInput" name="content" />
 
             </div>

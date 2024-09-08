@@ -36,24 +36,25 @@
 tbody .title {
   text-align: left;
 }
+
 .no {
   overflow: hidden;
   width: 5%;
 }
 
-.title {
-  overflow: hidden;
-  width: 60%;
-}
-
-.hashtag {
-  overflow: hidden;
-  width: 10%;
-}
-
 .id {
   overflow: hidden;
+  width: 15%;
+}
+
+.occupation {
+  overflow: hidden;
   width: 10%;
+}
+
+.title {
+  overflow: hidden;
+  width: 55%;
 }
 
 .date {
@@ -162,17 +163,17 @@ table {
 }
 
 /* disabled 클래스 */
-.pagination .disabled a {
+.pagination .disabled {
     pointer-events: none;  /* 클릭을 막습니다 */
     color: #999;           /* 회색으로 표시 */
     cursor: not-allowed;   /* 마우스를 비활성화된 상태로 */
 }
 
 /* active 클래스 */
-.pagination .active a {
+.pagination .active {
     font-weight: bold;     /* 굵게 표시 */
-    color: #000;           /* 검은색으로 표시 */
-    border-bottom: 2px solid #000;  /* 밑줄을 추가 */
+    color: #900;           /* 더 어둡고 진한 붉은색 */
+
 }
 
 

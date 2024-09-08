@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="/css/footer.css"/>
     <link rel="stylesheet" href="/css/postDetail.css"/>
     <link rel="stylesheet" href="/css/popup.css"/>
-
 </head>
 
 <body>
@@ -30,10 +29,9 @@
         <div id="login-popup" class="popup-overlay">
             <div class="popup-content">
                 <div class="popup-image-container">
-                    <img src="../img/image_1.jpg" alt="Left Image">
-                </div>
+                    <img src="https://img.freepik.com/premium-vector/crea-un-icono-que-ilustre-software-o-una-pc-laptop-vector-illustration-doodle-line-art_969863-91082.jpg?w=826" alt="Left Image">                </div>
                 <span class="popup-close">&times;</span>
-                <form id="login-form">
+                <form th:action="@{/user/login}" method="post">
                     <div class="popup-container">
                         <div class="popup-mainword">
                             <h2>Ready to connect with your favorite brand?</h2>
@@ -42,11 +40,11 @@
                         </div>
                         <div class="popup-word">
                             <label for="username">Username</label>
-                            <input type="text" id="username" name="username" required>
+                            <input type="text" id="username" name="userId" required>
                             <label for="password">Password</label>
                             <input type="password" id="password" name="password" required>
-                            <button type="submit">Login</button>
-                            <button type="button">Sign In</button>
+                            <button type="submit">Log in</button>
+                            <a th:href="@{/user/signup}">Sign Up</a>
                         </div>
                     </div>
                 </form>
@@ -63,7 +61,8 @@
                 </div>
 
 
-                <div class="edit-delete row-box">
+                <div class="edit-delete row-box"
+                     th:if="${loggedInUserId != null} AND ${loggedInUserId} == ${article.nickname}">
                     <a th:href="@{'/articles/' + ${article.id} + '/form'}">
                         수정
                     </a>
@@ -83,10 +82,10 @@
                     <div class="user-info row-box">
                         <div class="user-profile column-box">
                   <span class="user-name" th:text="${article.nickname}">글 작성자 닉네임</span
-                  ><span th:text="${article.hashtag}">글 작성자 직군 (임시로 이메일 값 넣어둠)</span>
+                  ><span th:text="${article.hashtag}">글 작성자 직군</span>
                         </div>
                         <span class="date"
-                              th:text="${#temporals.format(article.createdAt, 'yyyy.MM.dd')}"></span>
+                              th:text="${#temporals.format(article.createdAt, 'yyyy.MM.dd HH:mm')}"></span>
                     </div>
                 </div>
             </div>
@@ -109,21 +108,23 @@
                                 src="https://picsum.photos/50/49"
                                 alt=""
                         />
-                        <div class="user-info row-box">
+                        <div class="user-info row-box comment-row-box">
                             <div class="user-profile column-box">
                     <span class="user-name" th:text="${comment.nickname}">댓글 작성자 닉네임</span>
 <!--                    ><span th:text="${comment.email}">댓글 작성자 직군(임시로 이메일 넣어둠)</span>-->
                             </div>
 
                             <span class="date"
-                                  th:text="${#temporals.format(article.createdAt, 'yyyy.MM.dd')}">작성 날짜</span>
+                                  th:text="${#temporals.format(article.createdAt, 'yyyy.MM.dd HH:mm')}">작성 날짜</span>
 
                         </div>
                     </div>
 
-                    <div class="edit-delete">
+                    <div class="edit-delete"
+                         th:if="${loggedInUserId != null} AND ${loggedInUserId} == ${comment.nickname}">
 
-                        <!-- 수정 버튼을 누르면 textarea를 보여줍니다 -->
+
+                        <!-- 수정 버튼을 누르면 textarea를 보여줌 -->
                         <button type="button" th:onclick="showEditForm([[${comment.id}]])">수정</button>
 
                         <form th:action="@{'/comments/' + ${comment.id} + '/delete'}" method="post">
@@ -143,9 +144,12 @@
                     <form th:action="@{'/comments/' + ${comment.id} + '/update'}" method="post" style="display: none;" th:id="'editCommentForm-' + ${comment.id}">
                         <input type="hidden" name="articleId" th:value="${article.id}">
 
+                        <!--취소 버튼을 누르면 textarea를 보여주지 않음-->
+
                         <!-- 댓글 수정 textarea (초기에는 숨김 처리) -->
                         <textarea class="comment-text-input" name="content" th:id="'editCommentContent-' + ${comment.id}" style="display: none;" rows="10" cols="30"></textarea>
-                        <button type="submit">저장</button>
+                        <button type="button" th:onclick="cancelEditForm([[${comment.id}]])">취소</button>
+                        <button type="submit" class="button-submit">저장</button>
                     </form>
                 </div>
 
@@ -153,7 +157,7 @@
 
             <hr/>
 
-            <form th:action="@{'/comments/new'}" method="post" class="addComment row-box">
+            <form th:action="@{'/comments/new'}" method="post" class="addComment row-box" th:if="${session.userId} != null">
                 <input class="comment-text-input" type="text" name="content" required/>
                 <input type="hidden" name="articleId" th:value="${article.id}">
                 <button class="submit-btn">작성</button>
@@ -184,6 +188,18 @@
         editTextarea.style.display = "block";
         editCommentForm.style.display = "block";
     }
+
+    function cancelEditForm(commentId) {
+    // textarea와 저장 버튼을 숨기고, 댓글 내용을 다시 보여줍니다.
+    const commentContent = document.getElementById('commentContent-' + commentId);
+    const editTextarea = document.getElementById('editCommentContent-' + commentId);
+    const editCommentForm = document.getElementById('editCommentForm-' + commentId);
+
+    // 댓글 내용을 보여주고, textarea와 저장 버튼은 숨깁니다.
+    commentContent.style.display = "block";
+    editTextarea.style.display = "none";
+    editCommentForm.style.display = "none";
+}
 </script>
 </body>
 </html>

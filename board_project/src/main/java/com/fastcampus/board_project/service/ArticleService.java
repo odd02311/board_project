@@ -39,7 +39,7 @@ public class ArticleService {
                 case TITLE -> articleRepository.findByTitleContaining(searchKeyword, pageable).map(ArticleDto::from);
                 case CONTENT -> articleRepository.findByContentContaining(searchKeyword, pageable).map(ArticleDto::from);
                 case ID -> articleRepository.findByUserAccount_UserIdContaining(searchKeyword, pageable).map(ArticleDto::from);
-                case NICKNAME -> articleRepository.findByUserAccount_NicknameContaining(searchKeyword, pageable).map(ArticleDto::from);
+                case NICKNAME -> articleRepository.findByUserAccount_UserIdContaining(searchKeyword, pageable).map(ArticleDto::from);
                 case HASHTAG -> articleRepository.findByHashtag("#" + searchKeyword, pageable).map(ArticleDto::from);
 
         };
@@ -118,7 +118,7 @@ public class ArticleService {
             return articleRepository.findByHashtagAndTitleContaining(hashtag, additionalSearchValue, pageable)
                     .map(ArticleDto::from);
         } else if ("nickname".equals(additionalSearchType) && additionalSearchValue != null && !additionalSearchValue.isBlank()) {
-            return articleRepository.findByHashtagAndUserAccount_NicknameContaining(hashtag, additionalSearchValue, pageable)
+            return articleRepository.findByHashtagAndUserAccount_UserIdContaining(hashtag, additionalSearchValue, pageable)
                     .map(ArticleDto::from);
         } else {
             // 추가 검색 조건이 없으면 해시태그만으로 검색

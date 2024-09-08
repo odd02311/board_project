@@ -23,11 +23,11 @@ public interface ArticleRepository extends
 
   Page<Article> findByTitleContaining(String title, Pageable pageable);
   Page<Article> findByContentContaining(String content, Pageable pageable);
-  Page<Article> findByUserAccount_UserIdContaining(String UserId, Pageable pageable);
+  Page<Article> findByUserAccount_UserIdContaining(String userId, Pageable pageable);
   Page<Article> findByUserAccount_NicknameContaining(String nickname, Pageable pageable);
   Page<Article> findByHashtag(String hashtag, Pageable pageable);
   Page<Article> findByHashtagAndTitleContaining(String hashtag, String title, Pageable pageable);
-  Page<Article> findByHashtagAndUserAccount_NicknameContaining(String hashtag, String nickname, Pageable pageable);
+  Page<Article> findByHashtagAndUserAccount_UserIdContaining(String hashtag, String userId, Pageable pageable);
 
 
   @Override

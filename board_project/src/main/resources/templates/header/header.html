@@ -25,10 +25,26 @@
 
     <nav class="auth-buttons row-box">
         <ul>
-            <li class="header-list"><a id="open-login-popup">Log In</a></li>
-            <li class="header-list"><a th:href="@{/signup}">Sign Up</a></li>
+            <!-- 로그인 상태가 아닐 때 -->
+            <li th:if="${session.userId} == null" class="header-list">
+                <a id="open-login-popup">Log In</a>
+            </li>
+            <li th:if="${session.userId} == null" class="header-list">
+                <a th:href="@{/user/signup}">Sign Up</a>
+            </li>
+
+            <!-- 로그인 상태일 때 -->
+            <li th:if="${session.userId} != null" class="header-list">
+                <span>Welcome <strong th:text="${session.userId}"></strong></span>
+            </li>
+            <li th:if="${session.userId} != null" class="header-list">
+                <form th:action="@{/user/logout}" method="post">
+                    <button type="submit">Log Out</button>
+                </form>
+            </li>
         </ul>
     </nav>
+
 </header>
 
 </body>
