@@ -13,13 +13,15 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("테스트 도구 - Form 데이터 인코더")
-@Import({FormDataEncoder.class, ObjectMapper.class})
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = Void.class)
+@SpringBootTest(
+        webEnvironment = SpringBootTest.WebEnvironment.NONE,
+        classes = {FormDataEncoder.class, ObjectMapper.class}
+)
 class FormDataEncoderTest {
 
   private final FormDataEncoder formDataEncoder;
 
-  public FormDataEncoderTest(@Autowired FormDataEncoder formDataEncoder) {
+  FormDataEncoderTest(@Autowired FormDataEncoder formDataEncoder) {
     this.formDataEncoder = formDataEncoder;
   }
 
@@ -28,15 +30,15 @@ class FormDataEncoderTest {
   void givenObject_whenEncoding_thenReturnsFormEncodedString() {
     // Given
     TestObject obj = new TestObject(
-        "This 'is' \"test\" string.",
-        List.of("hello", "my", "friend").toString().replace(" ", ""),
-        String.join(",", "hello", "my", "friend"),
-        null,
-        1234,
-        3.14,
-        false,
-        BigDecimal.TEN,
-        TestEnum.THREE
+            "This 'is' \"test\" string.",
+            List.of("hello", "my", "friend").toString().replace(" ", ""),
+            String.join(",", "hello", "my", "friend"),
+            null,
+            1234,
+            3.14,
+            false,
+            BigDecimal.TEN,
+            TestEnum.THREE
     );
 
     // When
@@ -44,28 +46,28 @@ class FormDataEncoderTest {
 
     // Then
     assertThat(result).isEqualTo(
-        "str=This%20'is'%20%22test%22%20string." +
-            "&listStr1=%5Bhello,my,friend%5D" +
-            "&listStr2=hello,my,friend" +
-            "&nullStr" +
-            "&number=1234" +
-            "&floatingNumber=3.14" +
-            "&bool=false" +
-            "&bigDecimal=10" +
-            "&testEnum=THREE"
+            "str=This%20'is'%20%22test%22%20string." +
+                    "&listStr1=%5Bhello,my,friend%5D" +
+                    "&listStr2=hello,my,friend" +
+                    "&nullStr" +
+                    "&number=1234" +
+                    "&floatingNumber=3.14" +
+                    "&bool=false" +
+                    "&bigDecimal=10" +
+                    "&testEnum=THREE"
     );
   }
 
   record TestObject(
-      String str,
-      String listStr1,
-      String listStr2,
-      String nullStr,
-      Integer number,
-      Double floatingNumber,
-      Boolean bool,
-      BigDecimal bigDecimal,
-      TestEnum testEnum
+          String str,
+          String listStr1,
+          String listStr2,
+          String nullStr,
+          Integer number,
+          Double floatingNumber,
+          Boolean bool,
+          BigDecimal bigDecimal,
+          TestEnum testEnum
   ) {}
 
   enum TestEnum {

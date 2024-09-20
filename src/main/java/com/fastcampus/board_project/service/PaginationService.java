@@ -14,6 +14,7 @@ public class PaginationService {
         // 시작, 끝 번호 계산
         int startNumber = Math.max(currentPageNumber - (BAR_LENGTH / 2), 0); // 0 이랑 비교 큰수를 넣음.
         int endNumber = Math.min(startNumber + BAR_LENGTH, totalPages);
+
         return IntStream.range(startNumber, endNumber).boxed().toList();
     }
 

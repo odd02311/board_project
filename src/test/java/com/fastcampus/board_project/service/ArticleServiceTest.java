@@ -32,8 +32,8 @@ import static org.mockito.BDDMockito.*;
 @ExtendWith(MockitoExtension.class)
 class ArticleServiceTest {
 
-
     @InjectMocks private ArticleService sut;
+
     @Mock private ArticleRepository articleRepository;
     @Mock private UserAccountRepository userAccountRepository;
 
@@ -68,7 +68,6 @@ class ArticleServiceTest {
         assertThat(articles).isEmpty();
         then(articleRepository).should().findByTitleContaining(searchKeyword, pageable);
     }
-
 
     @DisplayName("검색어 없이 게시글을 해시태그 검색하면, 빈 페이지를 반환한다.")
     @Test
@@ -113,9 +112,9 @@ class ArticleServiceTest {
 
         // Then
         assertThat(dto)
-            .hasFieldOrPropertyWithValue("title", article.getTitle())
-            .hasFieldOrPropertyWithValue("content", article.getContent())
-            .hasFieldOrPropertyWithValue("hashtag", article.getHashtag());
+                .hasFieldOrPropertyWithValue("title", article.getTitle())
+                .hasFieldOrPropertyWithValue("content", article.getContent())
+                .hasFieldOrPropertyWithValue("hashtag", article.getHashtag());
         then(articleRepository).should().findById(articleId);
     }
 
@@ -131,15 +130,12 @@ class ArticleServiceTest {
 
         // Then
         assertThat(t)
-            .isInstanceOf(EntityNotFoundException.class)
-            .hasMessage("게시글이 없습니다 - articleId: " + articleId);
+                .isInstanceOf(EntityNotFoundException.class)
+                .hasMessage("게시글이 없습니다 - articleId: " + articleId);
         then(articleRepository).should().findById(articleId);
     }
 
-
-
-
-    @DisplayName("게시글을 조회하면, 게시글을 반환")
+    @DisplayName("게시글을 조회하면, 게시글을 반환한다.")
     @Test
     void givenArticleId_whenSearchingArticle_thenReturnsArticle() {
         // Given
@@ -158,23 +154,6 @@ class ArticleServiceTest {
         then(articleRepository).should().findById(articleId);
     }
 
-    @DisplayName("해시태그를 조회하면, 유니크 해시태그 리스트를 반환한다")
-    @Test
-    void givenNothing_whenCalling_thenReturnsHashtags() {
-        // Given
-        List<String> expectedHashtags = List.of("#java", "#spring", "#boot");
-        given(articleRepository.findAllDistinctHashtags()).willReturn(expectedHashtags);
-
-        // When
-        List<String> actualHashtags = sut.getHashtags();
-
-        // Then
-        assertThat(actualHashtags).isEqualTo(expectedHashtags);
-        then(articleRepository).should().findAllDistinctHashtags();
-    }
-
-
-
     @DisplayName("게시글이 없으면, 예외를 던진다.")
     @Test
     void givenNonexistentArticleId_whenSearchingArticle_thenThrowsException() {
@@ -192,8 +171,7 @@ class ArticleServiceTest {
         then(articleRepository).should().findById(articleId);
     }
 
-
-    @DisplayName("게시글 정보를 입력하면, 게시글을 생성")
+    @DisplayName("게시글 정보를 입력하면, 게시글을 생성한다.")
     @Test
     void givenArticleInfo_whenSavingArticle_thenSavesArticle() {
         // Given
@@ -209,8 +187,7 @@ class ArticleServiceTest {
         then(articleRepository).should().save(any(Article.class));
     }
 
-
-    @DisplayName("게시글 ID/ 수정 정보를 입력하면, 게시글을 수정")
+    @DisplayName("게시글의 수정 정보를 입력하면, 게시글을 수정한다.")
     @Test
     void givenModifiedArticleInfo_whenUpdatingArticle_thenUpdatesArticle() {
         // Given
@@ -245,14 +222,12 @@ class ArticleServiceTest {
         then(articleRepository).should().getReferenceById(dto.id());
     }
 
-
-
     @DisplayName("게시글의 ID를 입력하면, 게시글을 삭제한다")
     @Test
     void givenArticleId_whenDeletingArticle_thenDeletesArticle() {
         // Given
         Long articleId = 1L;
-        String userId = "TestAuthor";
+        String userId = "uno";
         willDoNothing().given(articleRepository).deleteByIdAndUserAccount_UserId(articleId, userId);
 
         // When
@@ -262,13 +237,43 @@ class ArticleServiceTest {
         then(articleRepository).should().deleteByIdAndUserAccount_UserId(articleId, userId);
     }
 
+    @DisplayName("게시글 수를 조회하면, 게시글 수를 반환한다")
+    @Test
+    void givenNothing_whenCountingArticles_thenReturnsArticleCount() {
+        // Given
+        long expected = 0L;
+        given(articleRepository.count()).willReturn(expected);
+
+        // When
+        long actual = sut.getArticleCount();
+
+        // Then
+        assertThat(actual).isEqualTo(expected);
+        then(articleRepository).should().count();
+    }
+
+    @DisplayName("해시태그를 조회하면, 유니크 해시태그 리스트를 반환한다")
+    @Test
+    void givenNothing_whenCalling_thenReturnsHashtags() {
+        // Given
+        List<String> expectedHashtags = List.of("#java", "#spring", "#boot");
+        given(articleRepository.findAllDistinctHashtags()).willReturn(expectedHashtags);
+
+        // When
+        List<String> actualHashtags = sut.getHashtags();
+
+        // Then
+        assertThat(actualHashtags).isEqualTo(expectedHashtags);
+        then(articleRepository).should().findAllDistinctHashtags();
+    }
+
 
     private UserAccount createUserAccount() {
         return UserAccount.of(
-                "author1",
-                "password",
-                "author1@email.com",
-                "AUTHOR1",
+                "test",
+                "asdf1234",
+                "test@email.com",
+                "TEST",
                 null
         );
     }
@@ -280,7 +285,6 @@ class ArticleServiceTest {
                 "content",
                 "#java"
         );
-
         ReflectionTestUtils.setField(article, "id", 1L);
 
         return article;
@@ -292,28 +296,28 @@ class ArticleServiceTest {
 
     private ArticleDto createArticleDto(String title, String content, String hashtag) {
         return ArticleDto.of(
-            1L,
+                1L,
                 createUserAccountDto(),
                 title,
                 content,
                 hashtag,
                 LocalDateTime.now(),
-                "author1",
+                "test",
                 LocalDateTime.now(),
-                "author1");
+                "test");
     }
 
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
-                "author1",
-                "password",
-                "author1@mail.com",
-                "AUTHOR1",
+                "test",
+                "asdf1234",
+                "test@mail.com",
+                "TEST",
                 "This is memo",
                 LocalDateTime.now(),
-                "author1",
+                "test",
                 LocalDateTime.now(),
-                "author1"
+                "test"
         );
     }
 

@@ -25,10 +25,10 @@ public class FormDataEncoder {
     valueMap.setAll(fieldMap);
 
     return UriComponentsBuilder.newInstance()
-        .queryParams(valueMap)
-        .encode()
-        .build()
-        .getQuery();
+            .queryParams(valueMap)
+            .encode()
+            .build()
+            .getQuery();
   }
 
 }
