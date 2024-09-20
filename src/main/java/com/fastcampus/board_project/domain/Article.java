@@ -4,13 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -29,7 +23,10 @@ public class Article extends AuditingFields{ // entity를 구성하는 필드 �
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId") private UserAccount userAccount; // 유저 정보 (ID)
+  @Setter 
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "userId")
+  private UserAccount userAccount; // 유저 정보 (ID)
 
   @Setter @Column(nullable = false) private String title; // 제목
   @Setter @Column(nullable = false, length = 10000) private String content; // 내용
@@ -85,12 +82,12 @@ public class Article extends AuditingFields{ // entity를 구성하는 필드 �
   public boolean equals(Object o) { // 받이들인 Object o가
     if (this == o) return true; // article 인지 확인
     if (!(o instanceof Article that)) return false;
-    return id != null && id.equals(that.getId());
+    return this.getId() != null && this.getId().equals(that.getId());
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id);
+    return Objects.hash(this.getId());
   }
 
 }

@@ -24,22 +24,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.*;
 
-@DisplayName("")
+@DisplayName("비즈니스 로직 - 댓글")
 @ExtendWith(MockitoExtension.class)
 class ArticleCommentServiceTest {
 
     @InjectMocks private ArticleCommentService sut;
 
-    @Mock
-    ArticleCommentRepository articleCommentRepository;
-    @Mock
-    private ArticleRepository articleRepository;
-    @Mock
-    private UserAccountRepository userAccountRepository;
+    @Mock private ArticleRepository articleRepository;
+    @Mock private ArticleCommentRepository articleCommentRepository;
+    @Mock private UserAccountRepository userAccountRepository;
 
-    @DisplayName("게시글 ID로 조회, 댓글 리스트 반환")
+    @DisplayName("게시글 ID로 조회하면, 해당하는 댓글 리스트를 반환한다.")
     @Test
-    void givenArticleId_whenSearchingArticleComments_thenReturnsArticleComments(){
+    void givenArticleId_whenSearchingArticleComments_thenReturnsArticleComments() {
         // Given
         Long articleId = 1L;
         ArticleComment expected = createArticleComment("content");
@@ -55,9 +52,7 @@ class ArticleCommentServiceTest {
         then(articleCommentRepository).should().findByArticle_Id(articleId);
     }
 
-
-
-    @DisplayName("댓글을 기입하면, 댓글 저장")
+    @DisplayName("댓글 정보를 입력하면, 댓글을 저장한다.")
     @Test
     void givenArticleCommentInfo_whenSavingArticleComment_thenSavesArticleComment() {
         // Given
@@ -74,7 +69,6 @@ class ArticleCommentServiceTest {
         then(userAccountRepository).should().getReferenceById(dto.userAccountDto().userId());
         then(articleCommentRepository).should().save(any(ArticleComment.class));
     }
-
 
     @DisplayName("댓글 저장을 시도했는데 맞는 게시글이 없으면, 경고 로그를 찍고 아무것도 안 한다.")
     @Test
@@ -131,7 +125,7 @@ class ArticleCommentServiceTest {
     void givenArticleCommentId_whenDeletingArticleComment_thenDeletesArticleComment() {
         // Given
         Long articleCommentId = 1L;
-        String userId = "TestAuthor1";
+        String userId = "uno";
         willDoNothing().given(articleCommentRepository).deleteByIdAndUserAccount_UserId(articleCommentId, userId);
 
         // When
@@ -142,9 +136,6 @@ class ArticleCommentServiceTest {
     }
 
 
-    // ============================== fixture ===========================================
-
-
     private ArticleCommentDto createArticleCommentDto(String content) {
         return ArticleCommentDto.of(
                 1L,
@@ -152,23 +143,23 @@ class ArticleCommentServiceTest {
                 createUserAccountDto(),
                 content,
                 LocalDateTime.now(),
-                "uno",
+                "test",
                 LocalDateTime.now(),
-                "uno"
+                "test"
         );
     }
 
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
-                "author1",
-                "password",
-                "author1@mail.com",
-                "AUTHOR1",
+                "test",
+                "asdf1234",
+                "test@mail.com",
+                "TEST",
                 "This is memo",
                 LocalDateTime.now(),
-                "author1",
+                "test",
                 LocalDateTime.now(),
-                "author1"
+                "test"
         );
     }
 
@@ -182,10 +173,10 @@ class ArticleCommentServiceTest {
 
     private UserAccount createUserAccount() {
         return UserAccount.of(
-                "author1",
-                "password",
-                "author1@email.com",
-                "AUTHOR1",
+                "test",
+                "asdf1234",
+                "test@email.com",
+                "TEST",
                 null
         );
     }
@@ -198,6 +189,5 @@ class ArticleCommentServiceTest {
                 "#java"
         );
     }
-
 
 }
