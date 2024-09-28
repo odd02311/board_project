@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -13,7 +14,6 @@ import java.util.Set;
 @ToString(callSuper = true)
 @Table(indexes = {
         @Index(columnList = "title"),
-        @Index(columnList = "hashtag"),
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
@@ -31,7 +31,16 @@ public class Article extends AuditingFields{ // entity를 구성하는 필드 �
   @Setter @Column(nullable = false) private String title; // 제목
   @Setter @Column(nullable = false, length = 10000) private String content; // 내용
 
-  @Setter private String hashtag; // 해시태그
+//  @Setter private String hashtag; // 해시태그
+  @ToString.Exclude
+  @JoinTable(
+          name = "article_hashtag",
+          joinColumns = @JoinColumn(name = "articleId"),
+          inverseJoinColumns = @JoinColumn(name = "hashtagId")
+  )
+  @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+  private Set<Hashtag> hashtags = new LinkedHashSet<>();
+
 
   @ToString.Exclude
   @OrderBy("createdAt DESC")
@@ -54,17 +63,29 @@ public class Article extends AuditingFields{ // entity를 구성하는 필드 �
   factory method를 이용할 것이기때문에 private를 걸어준다.
 
  */
-  private Article(UserAccount userAccount, String title, String content, String hashtag) {
+  private Article(UserAccount userAccount, String title, String content) {
     this.userAccount = userAccount;
     this.title = title;
     this.content = content;
-    this.hashtag = hashtag;
   }
 
   // new를 쓰지않고 사용하게 의도 전달 (가이드 개념): 제목, 본문, 해시태그를 넣어주세요
-  public static Article of(UserAccount userAccount, String title, String content, String hashtag) {
-    return new Article(userAccount, title, content, hashtag);
+  public static Article of(UserAccount userAccount, String title, String content) {
+    return new Article(userAccount, title, content);
   }
+
+  public void addHashtag(Hashtag hashtag) {
+    this.getHashtags().add(hashtag);
+  }
+
+  public void addHashtags(Collection<Hashtag> hashtags) {
+    this.getHashtags().addAll(hashtags);
+  }
+
+  public void clearHashtags() {
+    this.getHashtags().clear();
+  }
+
 /*
   만약에 list에 담아서 or collection에 담아서 사용할때
   중복 요소를 제거하거나, 정렬을 해야할때 비교 할 것이 필요함
