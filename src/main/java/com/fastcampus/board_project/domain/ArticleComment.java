@@ -15,20 +15,25 @@ import java.util.Objects;
         @Index(columnList = "createdBy")
 })
 @Entity
-public class ArticleComment extends AuditingFields{
+public class ArticleComment extends AuditingFields {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Setter @ManyToOne(optional = false) private Article article; // 게시글 (ID)
-  @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId") private UserAccount userAccount; // 유저 정보 (ID)
+  @Setter
+  @ManyToOne(optional = false)
+  private Article article; // 게시글 (ID)
 
-  @Setter @Column(nullable = false, length = 500) private String content; // 내용
+  @Setter
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "userId")
+  private UserAccount userAccount; // 유저 정보 (ID)
 
-  protected ArticleComment() {
+  @Setter @Column(nullable = false, length = 500) private String content; // 본문
 
-  }
+
+  protected ArticleComment() {}
 
   private ArticleComment(Article article, UserAccount userAccount, String content) {
     this.article = article;
@@ -51,4 +56,5 @@ public class ArticleComment extends AuditingFields{
   public int hashCode() {
     return Objects.hash(this.getId());
   }
+
 }

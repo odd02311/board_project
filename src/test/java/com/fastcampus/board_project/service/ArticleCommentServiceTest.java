@@ -2,6 +2,7 @@ package com.fastcampus.board_project.service;
 
 import com.fastcampus.board_project.domain.Article;
 import com.fastcampus.board_project.domain.ArticleComment;
+import com.fastcampus.board_project.domain.Hashtag;
 import com.fastcampus.board_project.domain.UserAccount;
 import com.fastcampus.board_project.dto.ArticleCommentDto;
 import com.fastcampus.board_project.dto.UserAccountDto;
@@ -19,6 +20,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -143,29 +145,29 @@ class ArticleCommentServiceTest {
                 createUserAccountDto(),
                 content,
                 LocalDateTime.now(),
-                "test",
+                "uno",
                 LocalDateTime.now(),
-                "test"
+                "uno"
         );
     }
 
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
-                "test",
-                "asdf1234",
-                "test@mail.com",
-                "TEST",
+                "uno",
+                "password",
+                "uno@mail.com",
+                "Uno",
                 "This is memo",
                 LocalDateTime.now(),
-                "test",
+                "uno",
                 LocalDateTime.now(),
-                "test"
+                "uno"
         );
     }
 
     private ArticleComment createArticleComment(String content) {
         return ArticleComment.of(
-                Article.of(createUserAccount(), "title", "content", "hashtag"),
+                createArticle(),
                 createUserAccount(),
                 content
         );
@@ -173,21 +175,27 @@ class ArticleCommentServiceTest {
 
     private UserAccount createUserAccount() {
         return UserAccount.of(
-                "test",
-                "asdf1234",
-                "test@email.com",
-                "TEST",
+                "uno",
+                "password",
+                "uno@email.com",
+                "Uno",
                 null
         );
     }
 
     private Article createArticle() {
-        return Article.of(
+        Article article = Article.of(
                 createUserAccount(),
                 "title",
-                "content",
-                "#java"
+                "content"
         );
+        article.addHashtags(Set.of(createHashtag(article)));
+
+        return article;
+    }
+
+    private Hashtag createHashtag(Article article) {
+        return Hashtag.of("java");
     }
 
 }

@@ -23,23 +23,24 @@ public class Article extends AuditingFields{ // entity를 구성하는 필드 �
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Setter 
-  @ManyToOne(optional = false)
+  @Setter
   @JoinColumn(name = "userId")
+  @ManyToOne(optional = false)
   private UserAccount userAccount; // 유저 정보 (ID)
+
 
   @Setter @Column(nullable = false) private String title; // 제목
   @Setter @Column(nullable = false, length = 10000) private String content; // 내용
 
 //  @Setter private String hashtag; // 해시태그
-  @ToString.Exclude
-  @JoinTable(
-          name = "article_hashtag",
-          joinColumns = @JoinColumn(name = "articleId"),
-          inverseJoinColumns = @JoinColumn(name = "hashtagId")
-  )
-  @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-  private Set<Hashtag> hashtags = new LinkedHashSet<>();
+@ToString.Exclude
+@JoinTable(
+        name = "article_hashtag",
+        joinColumns = @JoinColumn(name = "articleId"),
+        inverseJoinColumns = @JoinColumn(name = "hashtagId")
+)
+@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+private Set<Hashtag> hashtags = new LinkedHashSet<>();
 
 
   @ToString.Exclude
