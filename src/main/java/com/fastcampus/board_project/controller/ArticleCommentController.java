@@ -17,7 +17,6 @@ public class ArticleCommentController {
 
     private final ArticleCommentService articleCommentService;
 
-
     @PostMapping("/new")
     // TODO: 인증 정보를 넣어야 한다. (완료)
     public String postNewArticleComment(
@@ -25,7 +24,6 @@ public class ArticleCommentController {
             ArticleCommentRequest articleCommentRequest
     ) {
         articleCommentService.saveArticleComment(articleCommentRequest.toDto(boardPrincipal.toDto()));
-
 
         return "redirect:/articles/" + articleCommentRequest.articleId();
 
