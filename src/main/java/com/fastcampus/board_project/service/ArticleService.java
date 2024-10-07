@@ -92,6 +92,17 @@ public class ArticleService {
                     article.setContent(dto.content());
                 }
 
+                Set<Long> hashtagIds = article.getHashtags().stream()
+                        .map(Hashtag::getId)
+                        .collect(Collectors.toUnmodifiableSet());
+                article.clearHashtags();
+                articleRepository.flush();
+
+                hashtagIds.forEach(hashtagService::deleteHashtagWithoutArticles);
+
+                Set<Hashtag> hashtags = renewHashtagsFromContent(dto.content());
+                article.addHashtags(hashtags);
+
 
 
                 /*
@@ -102,7 +113,7 @@ public class ArticleService {
                     delete 해주지 않으면 밑에서 새로 해시태그를 추가하는 부분이랑 지우는 부분이 중복이 일어나서
                     delete 수행이 원하는 대로 되지 않을 수 있다. 그래서 여기서 지우는 내용을 먼저 실제로 확정을 짓기 위해 flush를 한다.
 
-                    가져온 해시태그 id로부터 더이상 게시글이 존재하지 않는다면 
+                    가져온 해시태그 id로부터 더이상 게시글이 존재하지 않는다면
                  */
 
             }
@@ -114,7 +125,15 @@ public class ArticleService {
 
 
     public void deleteArticle(long articleId, String userId) {
+        Article article = articleRepository.getReferenceById(articleId);
+        Set<Long> hashtagIds = article.getHashtags().stream()
+                                .map(Hashtag::getId)
+                                .collect(Collectors.toUnmodifiableSet());
+
         articleRepository.deleteByIdAndUserAccount_UserId(articleId, userId);
+        articleRepository.flush();
+
+        hashtagIds.forEach(hashtagService::deleteHashtagWithoutArticles);
     }
 
     public long getArticleCount() {
@@ -122,16 +141,17 @@ public class ArticleService {
     }
 
     @Transactional(readOnly = true)
-    public Page<ArticleDto> searchArticlesViaHashtag(String hashtag, Pageable pageable) {
-        if (hashtag == null || hashtag.isBlank()) {
+    public Page<ArticleDto> searchArticlesViaHashtag(String hashtagName, Pageable pageable) {
+        if (hashtagName == null || hashtagName.isBlank()) {
             return Page.empty(pageable);
         }
 
-        return articleRepository.findByHashtagNames(null, pageable).map(ArticleDto::from);
+        return articleRepository.findByHashtagNames(List.of(hashtagName), pageable)
+                .map(ArticleDto::from);
     }
 
     public List<String> getHashtags() {
-        return articleRepository.findAllDistinctHashtags();
+        return hashtagRepository.findAllHashtagNames();
     }
 
     private Set<Hashtag> renewHashtagsFromContent(String content) {
