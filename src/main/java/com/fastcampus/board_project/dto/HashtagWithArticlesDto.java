@@ -44,3 +44,5 @@ public record HashtagWithArticlesDto(
     }
 
 }
+
+// 하나의 해시태그 정보가 아티클 정보까지 들고있는 dto
