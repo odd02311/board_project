@@ -51,7 +51,7 @@ public class ArticleController {
       ArticleWithCommentsResponse article = ArticleWithCommentsResponse.from(articleService.getArticleWithComments(articleId));
 
       map.addAttribute("article", article); // (완료)TODO: 구현할 때 여기에 실제 데이터 넣어야 함
-      map.addAttribute("articleComments", article.articleCommentResponse());
+      map.addAttribute("articleComments", article.articleCommentsResponse());
       map.addAttribute("totalCount", articleService.getArticleCount());
       map.addAttribute("searchTypeHashtag", SearchType.HASHTAG);
 
